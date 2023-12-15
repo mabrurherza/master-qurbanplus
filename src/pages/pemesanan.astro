@@ -1,0 +1,585 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+const pageTitle = "Pemesanan Hewan";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <main class="row g-0">
+        <div
+            class="breadcrumb mb-0 bg-bone px-default py-small d-flex place-center gap-2"
+        >
+            <p class="eyebrow-sm text-gold opacity-50">
+                <a class="link-gold no-underline" href="/checkout">checkout</a>
+            </p>
+            <p class="eyebrow-sm">{`>`}</p>
+            <p class="eyebrow-sm text-gold">pemesanan</p>
+            <p class="eyebrow-sm">{`>`}</p>
+            <p class="eyebrow-sm text-gold opacity-50">pembayaran</p>
+        </div>
+
+        <div class="col-12 col-md d-flex justify-content-end">
+            <div
+                class="bg-white max-w-sm px-default py-small d-flex flex-column gap-2"
+            >
+                <div class="callout-info">
+                    <p class="body-base">
+                        Sudah pernah daftar/transaksi di QurbanPlus? <a
+                            href="/user/login"
+                            class="link-gold">Login disini</a
+                        >
+                    </p>
+                </div>
+                <h1 class="body-lg text-bold text-blood">Form Data Pemesan</h1>
+                <div class="alert alert-info body-sm" role="alert">
+                    Alamat email yang dimasukkan akan digunakan sebagai username
+                    login QurbanPlus. Dan password akan dikirim melalui email.
+                </div>
+
+                <form id="formPemesan" class="row g-0 gap-3 needs-validation">
+                    <div>
+                        <label for="exampleFormControlInput1" class="form-label"
+                            >Nama Lengkap Pemesan</label
+                        >
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="NamaPemesan"
+                            placeholder="Fulan bin Fulan"
+                            required
+                        />
+                        <div class="invalid-feedback">Nama belum ditulis</div>
+                    </div>
+                    <div>
+                        <label for="exampleFormControlInput1" class="form-label"
+                            >Email Aktif</label
+                        >
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="EmailPemesan"
+                            placeholder="fulan@gmail.com"
+                            required
+                        />
+                        <div class="invalid-feedback">
+                            Email belum ditulis/salah format
+                        </div>
+                    </div>
+                    <div>
+                        <label for="exampleFormControlInput1" class="form-label"
+                            >No Whatsapp Aktif</label
+                        >
+                        <div class="input-group">
+                            <!-- <select
+                                class="form-select"
+                                aria-label="Default select example"
+                            >
+                                <option selected value="62">Kode Negara</option>
+                                <option value="62">(Indonesia) +62</option>
+                            </select> -->
+                            <input
+                                type="tel"
+                                class="form-control"
+                                id="phoneNumber"
+                                inputmode="numeric"
+                                minlength="10"
+                                placeholder="081212345678"
+                                required
+                            />
+                            <div class="invalid-feedback">
+                                Nomor belum dimasukkan
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <select
+                            class="form-select"
+                            aria-label="Default select example"
+                        >
+                            <option value="" selected>Pilih Kota</option>
+                            <option value="1">Kepulauan Seribu</option>
+                            <option value="2">Jakarta Selatan</option>
+                            <option value="3">Jakarta Timur</option>
+                            <option value="3">Bogor</option>
+                        </select>
+                        <div class="form-text">Hanya tersedia JABODETABEK</div>
+                    </div>
+
+                    <div>
+                        <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            required
+                        >
+                            <option value="">Kecamatan</option>
+                            <option value="1">Ps. Rebo</option>
+                            <option value="2">Ps. Minggu</option>
+                            <option value="3">Ciracas</option>
+                            <option value="3">Condet</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            required
+                        >
+                            <option value="" selected>Kelurahan</option>
+                            <option value="1">Pekayon</option>
+                            <option value="2">Kalisari</option>
+                            <option value="3">Cijantung</option>
+                            <option value="3">Cibubur</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label
+                            for="exampleFormControlTextarea1"
+                            class="form-label">Alamat</label
+                        >
+                        <textarea
+                            class="form-control"
+                            id="exampleFormControlTextarea1"
+                            rows="4"></textarea>
+                    </div>
+
+                    <!-- <div>
+                        <button class="btn btn-primary w-100" type="submit"
+                            >Simpan data</button
+                        >
+                    </div> -->
+                </form>
+            </div>
+        </div>
+
+        <!-- FORM SHOHIBUL QURBAN -->
+
+        <div class="bg-marrow col-12 col-md d-flex justify-content-start">
+            <div class="bg-marrow max-w-sm px-md py-small">
+                <h1 class="body-lg text-bold text-blood">Pesanan</h1>
+
+                <div
+                    class="d-flex flex-column justify-content-between g-0 border border-bone p-3 rounded-sm"
+                >
+                    <div>
+                        <div class="h-fit">
+                            <p
+                                class="bg-white uppercase w-fit p-1 subtext mb-2 text-blood"
+                            >
+                                domba
+                            </p>
+                            <h5 class="display-sm text-blood">
+                                Cross Dorper F1 Gold
+                            </h5>
+                        </div>
+                        <div class="d-flex justify-content-between h-fit">
+                            <p>±55kg</p>
+                            <p>
+                                RP{
+                                    new Intl.NumberFormat("id-ID").format(
+                                        6240000,
+                                    )
+                                }
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <form
+                            id=""
+                            class="row g-0 gap-3 needs-validation bg-white p-3 rounded-sm"
+                        >
+                            <div>
+                                <label
+                                    for="exampleFormControlInput1"
+                                    class="form-label"
+                                    >Nama Shohibul Qurban</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="NamaPemesan"
+                                    placeholder="Fulan bin Fulan"
+                                    required
+                                />
+                                <div class="invalid-feedback">
+                                    Nama belum ditulis
+                                </div>
+                            </div>
+
+                            <div class="row g-0 gap-2">
+                                <p class="text-blood">Penyaluran:</p>
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="Penyaluran"
+                                        id="Penyaluran1"
+                                        value="Penyaluran1"
+                                        checked
+                                    />
+                                    <label
+                                        class="form-check-label"
+                                        for="Penyaluran1"
+                                    >
+                                        Hewan hidup diantarkan (khusus
+                                        Jabodetabek)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="Penyaluran"
+                                        id="Penyaluran2"
+                                        value="Penyaluran2"
+                                    />
+                                    <label
+                                        class="form-check-label"
+                                        for="Penyaluran2"
+                                    >
+                                        Salurkan semua ke penerima manfaat
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="Penyaluran"
+                                        id="Penyaluran3"
+                                        value="Penyaluran3"
+                                    />
+                                    <label
+                                        class="form-check-label"
+                                        for="Penyaluran3"
+                                    >
+                                        Ambil Sebagian (datang ke lokasi)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="Penyaluran"
+                                        id="Penyaluran4"
+                                        value="Penyaluran4"
+                                    />
+                                    <label
+                                        class="form-check-label"
+                                        for="Penyaluran4"
+                                    >
+                                        Daging dikirimkan (khusus Jabodetabek) -
+                                        1/3 bagian= ± 10-15% dari berat hidup
+                                        atau estimasi 2 bagian paha <strong
+                                            >+Rp75.000</strong
+                                        >
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div
+                                id="containerPenyembelihan"
+                                class="row g-0"
+                                style="display: none"
+                            >
+                                <p class="text-blood mb-2">
+                                    Proses Penyembelihan:
+                                </p>
+                                <div class="form-check mb-2">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="penyembelihan"
+                                        id="Penyembelihan1"
+                                        value="Penyembelihan1"
+                                        checked
+                                    />
+                                    <label
+                                        class="form-check-label"
+                                        for="Penyembelihan1"
+                                    >
+                                        Sembelih sendiri (dipandu dengan tenaga
+                                        ahli)
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="penyembelihan"
+                                        id="Penyembelihan2"
+                                        value="Penyembelihan2"
+                                    />
+                                    <label
+                                        class="form-check-label"
+                                        for="Penyembelihan2"
+                                    >
+                                        Diwakilkan oleh keluarga (dipandu dengan
+                                        tenaga ahli)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="penyembelihan"
+                                        id="Penyembelihan3"
+                                        value="Penyembelihan3"
+                                    />
+                                    <label
+                                        class="form-check-label"
+                                        for="Penyembelihan3"
+                                    >
+                                        Diwakilkan oleh team QurbanPlus
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div
+                            id="containerFormShohibulQurban"
+                            class="row g-0 gap-3"
+                        >
+                            <div
+                                class="form-check mt-3 alert alert-secondary"
+                                style="padding-left: 32px;"
+                            >
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value=""
+                                    id="copyCheckbox"
+                                />
+                                <label
+                                    class="form-check-label"
+                                    for="copyCheckbox"
+                                >
+                                    Isi sama dengan data pemesan
+                                </label>
+                            </div>
+                            <form
+                                action=""
+                                id="formShohibulQurban-1"
+                                class="row g-0 gap-3"
+                            >
+                                <div>
+                                    <label
+                                        for="exampleFormControlInput1"
+                                        class="form-label">Nama Penerima</label
+                                    >
+                                    <div class="input-group">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            id="namaPenerima"
+                                            placeholder="Fulan"
+                                            required
+                                        />
+                                        <div class="invalid-feedback">
+                                            Nama belum dimasukkan
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label
+                                        for="exampleFormControlInput1"
+                                        class="form-label">Email</label
+                                    >
+                                    <input
+                                        type="email"
+                                        class="form-control"
+                                        id="EmailPemesan"
+                                        placeholder="fulan@gmail.com"
+                                    />
+                                    <div class="invalid-feedback">
+                                        Email belum ditulis/salah format
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label
+                                        for="exampleFormControlInput1"
+                                        class="form-label"
+                                        >Handphone Penerima</label
+                                    >
+                                    <div class="input-group">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            id="phoneNumber"
+                                            placeholder="081212345678"
+                                            required
+                                        />
+                                        <div class="invalid-feedback">
+                                            Nomor belum dimasukkan
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <select
+                                        class="form-select"
+                                        aria-label="Default select example"
+                                    >
+                                        <option value="" selected
+                                            >Pilih Kota</option
+                                        >
+                                        <option value="1"
+                                            >Kepulauan Seribu</option
+                                        >
+                                        <option value="2"
+                                            >Jakarta Selatan</option
+                                        >
+                                        <option value="3">Jakarta Timur</option>
+                                        <option value="3">Bogor</option>
+                                    </select>
+                                    <div class="form-text">
+                                        Hanya tersedia JABODETABEK
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <select
+                                        class="form-select"
+                                        aria-label="Default select example"
+                                        required
+                                    >
+                                        <option value="0">Kecamatan</option>
+                                        <option value="1">Ps. Rebo</option>
+                                        <option value="2">Ps. Minggu</option>
+                                        <option value="3">Ciracas</option>
+                                        <option value="3">Condet</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <select
+                                        class="form-select"
+                                        aria-label="Default select example"
+                                        required
+                                    >
+                                        <option value="" selected
+                                            >Kelurahan</option
+                                        >
+                                        <option value="1">Pekayon</option>
+                                        <option value="2">Kalisari</option>
+                                        <option value="3">Cijantung</option>
+                                        <option value="3">Cibubur</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label
+                                        for="alamatShohibulQurban"
+                                        class="form-label">Alamat</label
+                                    >
+                                    <textarea
+                                        class="form-control"
+                                        id="alamatShohibulQurban"
+                                        rows="2"></textarea>
+                                </div>
+                            </form>
+                            <div>
+                                <p class="text-blood mb-2">Nominal Bayar:</p>
+                                <div class="form-check mb-2">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="nominalBayar"
+                                        id="bayarPenuh"
+                                        value="6240000"
+                                        checked
+                                    />
+                                    <label
+                                        class="form-check-label"
+                                        for="bayarPenuh"
+                                    >
+                                        Bayar Penuh: 6.240.000
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="nominalBayar"
+                                        id="bayarCicil"
+                                        value="bayarCicil"
+                                    />
+                                    <label
+                                        class="form-check-label"
+                                        for="bayarCicil"
+                                    >
+                                        Bayar Cicil
+                                    </label>
+                                </div>
+                                <div>
+                                    <div
+                                        class="input-group input-nominal"
+                                        style="display: none"
+                                    >
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            id="inputNominal"
+                                            placeholder="Masukkan nominal"
+                                            required
+                                        />
+                                        <div class="invalid-feedback">
+                                            Nominal belum dimasukkan
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </form> -->
+                    </div>
+                </div>
+
+                <div class="mt-3 row g-0 gap-2 border-bottom border-bone pb-2">
+                    <h2 class="body-lg text-bold text-blood">
+                        Ringkasan pemesanan
+                    </h2>
+                    <div class="input-group mb-3">
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Kupon Diskon"
+                            aria-label="Kupon Diskon"
+                            aria-describedby="button-addon2"
+                        />
+                        <button
+                            class="btn btn-outline-secondary"
+                            type="button"
+                            id="button-addon2">Apply</button
+                        >
+                        <div class="invalid-feedback">Kupon tidak valid.</div>
+                    </div>
+                    <div class="d-flex justify-content-between h-fit">
+                        <p>Subtotal</p>
+                        <p>Rp6.240.000</p>
+                    </div>
+                    <div class="d-flex justify-content-between h-fit">
+                        <p>Ongkir</p>
+                        <p>0</p>
+                    </div>
+                    <div class="d-flex justify-content-between h-fit">
+                        <p>Potongan</p>
+                        <p>0</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="d-flex justify-content-between h-fit py-small">
+                        <p class="body-xl">TOTAL BAYAR</p>
+                        <p class="body-xl text-blood">Rp6.240.000</p>
+                    </div>
+                    <a href="/pembayaran">
+                        <button class="btn btn-primary w-100">BAYAR</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+</BaseLayout>

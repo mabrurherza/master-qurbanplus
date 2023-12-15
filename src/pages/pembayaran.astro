@@ -1,0 +1,169 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+
+const langkahBayar = [
+    {
+        nama: "Cara bayar dengan CIMB Clicks",
+        langkah: [
+            "Login ke CIMB clicks ",
+            "Pilih menu Bayar Tagihan / Pay Bills",
+            "Pilih Rekening Sumber / Source Account dan Jenis Pembayaran / Payment Type > Virtual Account",
+            "Masukkan nomor virtual account di atas",
+            "Nomor serta nama virtual account dan jumlah billing akan ditampilkan pada layar",
+            "Masukkan 6 digit mPIN dan tekan tombol Submit",
+            "Konfirmasi pembayaran ditampilkan pada layar",
+        ],
+    },
+    {
+        nama: "GO Mobile CIMB NIAGA",
+        langkah: [
+            "Login ke Go Mobile",
+            "Pilih menu TRANSFER",
+            "Pilih Transfer to Other CIMB Niaga Account",
+            "Pilih rekening sumber Anda: CASA atau Rekening Ponsel",
+            "Pilih CASA dan masukkan nomor virtual account di atas",
+            "Masukkan jumlah pembayaran sesuai tagihan",
+            "Masukkan Mobile Banking PIN",
+            "Konfirmasi pembayaran ditampilkan pada layar",
+        ],
+    },
+    {
+        nama: "ATM CIMB",
+        langkah: [
+            "Masukkan Kartu ATM dan PIN CIMB",
+            "Pilih menu Pembayaran > Lanjut > Virtual Account",
+            "Masukkan nomor virtual account di atas",
+            "Pilih rekening debit",
+            "Nomor, nama virtual account dan jumlah billing ditampilkan pada layar",
+            "Pilih OK untuk melakukan pembayaran",
+            "Konfirmasi pembayaran ditampilkan pada layar",
+        ],
+    },
+    {
+        nama: "ATM Bersama/Prima",
+        langkah: [
+            "Pilih menu TRANSFER > TRANSFER KE BANK LAIN",
+            "Masukkan kode bank CIMB Niaga: 022",
+            "Masukkan jumlah pembayaran sesuai tagihan",
+            "Masukkan nomor virtual account di atas",
+            "Ikuti instruksi untuk menyelesaikan transaksi",
+            "Konfirmasi pembayaran ditampilkan pada layar",
+        ],
+    },
+    {
+        nama: "Internet Banking Lainnya",
+        langkah: [
+            "Login ke Internet Banking bank pilihan Anda",
+            "Pilih menu transfer ke Bank Lain Online",
+            "Pilih bank tujuan Bank CIMB Niaga (kode bank: 022)",
+            "Masukkan nomor virtual account di atas",
+            "Masukkan jumlah pembayaran sesuai tagihan",
+            "Nomor, nama virtual account dan jumlah billing ditampilkan pada layar",
+            "Ikuti instruksi untuk menyelesaikan transaksi",
+            "Konfirmasi pembayaran ditampilkan pada layar",
+        ],
+    },
+];
+---
+
+<BaseLayout>
+    <main>
+        <div
+            class="breadcrumb mb-0 bg-bone px-default py-small d-flex place-center gap-2"
+        >
+            <p class="eyebrow-sm text-gold opacity-50">
+                <a class="link-gold no-underline" href="/pemesanan">checkout</a>
+            </p>
+            <p class="eyebrow-sm">{`>`}</p>
+            <p class="eyebrow-sm text-gold">
+                <a class="link-gold no-underline" href="/pemesanan">pemesanan</a
+                >
+            </p>
+            <p class="eyebrow-sm">{`>`}</p>
+            <p class="eyebrow-sm text-gold">pembayaran</p>
+        </div>
+
+        <section class="max-w-sm g-0 py-small m-auto">
+            <div
+                class="nomor-va-container sticky-top pt-2 pb-2 mb-2 border-bottom border-bone bg-white px-default"
+            >
+                <p class="subtext text-blood">Nomor CIMB Virtual Account</p>
+                <p class="subtext">
+                    (Nomor rekening akan berubah-ubah setiap transaksi
+                    berikutnya)
+                </p>
+                <div class="d-flex gap-3 mt-3">
+                    <p class="body-lg" id="nomorVA">4749-635653317746</p>
+                    <button class="btn btn-sm" id="buttonSalin">Salin</button>
+                </div>
+            </div>
+
+            <div class="px-default pb-2 mb-2 border-bottom border-bone">
+                <p class="subtext text-blood">Total tagihan</p>
+                <p class="body-lg">RP6.240.000</p>
+            </div>
+
+            <div class="px-default pb-2 mb-2 border-bottom border-bone">
+                <p class="subtext text-blood">Batas akhir pembayaran</p>
+                <p class="body-lg">Rabu, 23 November 2023/ 00:00 WIB</p>
+            </div>
+
+            <div class="pb-2 mt-4 px-default">
+                <p class="subtext text-blood mb-1">Cara pembayaran</p>
+                <div class="accordion" id="CaraBayar">
+                    {
+                        langkahBayar.map((item, index) => (
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button
+                                        class="accordion-button  bg-marrow text-semibold collapsed"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target={`#collapse${index}`}
+                                        aria-expanded="true"
+                                        aria-controls={`collapse${index}`}
+                                    >
+                                        {item.nama}
+                                    </button>
+                                </h2>
+                                <div
+                                    id={`collapse${index}`}
+                                    class="accordion-collapse collapse"
+                                    data-bs-parent="#CaraBayar"
+                                >
+                                    {" "}
+                                    <ol class="accordion-body">
+                                        {item.langkah.map((i) => (
+                                            <li class="body-base">{i}</li>
+                                        ))}
+                                    </ol>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-2 show">
+        <div
+            id="liveToast"
+            class="toast"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+        >
+            <div class="toast-header">
+                <div class="toast-body d-flex gap-2">
+                    <p style="" class="body-sm">Nomor berhasil disalin</p>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</BaseLayout>

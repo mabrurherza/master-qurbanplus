@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+const pageTitle = "Coming Soon QurbanPlus Shop";
+
+import Carousel from "../components/Carousel.astro";
+
+const carouselContents = await Astro.glob("./carousel-shop/*.md");
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <section class="hero container-fluid g-0">
+        <Carousel carouselContents={carouselContents} />
+    </section>
+</BaseLayout>

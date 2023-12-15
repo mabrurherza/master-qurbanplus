@@ -1,0 +1,121 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+---
+
+<BaseLayout>
+    <main class="">
+        <div
+            class="breadcrumb bg-bone px-default py-small d-flex place-center gap-2"
+        >
+            <p class="eyebrow-sm text-gold"><a>Checkout</a></p>
+            <p class="eyebrow-sm">{`>`}</p>
+            <p class="eyebrow-sm text-gold opacity-50">pemesanan</p>
+            <p class="eyebrow-sm">{`>`}</p>
+            <p class="eyebrow-sm text-gold opacity-50">pembayaran</p>
+        </div>
+
+        <section class="max-w-sm m-auto py-small">
+            <div class="row px-default g-0 mb-4">
+                <div class="col-4 g-0">
+                    <img
+                        class="img-fluid"
+                        src="/assets/images/hewan/dorper-gold.jpg"
+                    />
+                </div>
+                <div
+                    class="col-8 d-flex flex-column justify-content-between g-0 ps-4"
+                >
+                    <div class="h-fit">
+                        <p class="bg-marrow uppercase w-fit p-1 subtext mb-2">
+                            domba
+                        </p>
+                        <h5 class="display-sm text-blood">
+                            Cross Dorper F1 Gold
+                        </h5>
+                    </div>
+                    <div class="d-flex justify-content-between h-fit">
+                        <p>±55kg</p>
+                        <p>
+                            RP{Intl.NumberFormat("id-ID").format(6240000)}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2 px-default">
+                <div class="row g-0 border-top border-bottom border-bone py-xs">
+                    <div class="col">
+                        <p class="subtext mb-1">Jumlah Pesanan:</p>
+                        <div class="d-flex g-0 gap-1 align-items-center">
+                            <button class="btn decrement-btn"
+                                ><svg
+                                    width="100%"
+                                    height="100%"
+                                    viewBox="0 0 16 4"
+                                    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                >
+                                    <g
+                                        transform="matrix(1,0,0,1,-14219.4,-23504.8)"
+                                    >
+                                        <g
+                                            transform="matrix(4.49462e-17,0.734026,-0.948507,5.80793e-17,36520.8,13091.9)"
+                                        >
+                                            <rect
+                                                x="14186"
+                                                y="23495.2"
+                                                width="5.449"
+                                                height="16.869"
+                                                style="fill:rgb(106,37,30);"
+                                            ></rect>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                            <button class="btn increment-btn"
+                                ><svg
+                                    width="100%"
+                                    height="100%"
+                                    viewBox="0 0 16 16"
+                                    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                >
+                                    <g
+                                        transform="matrix(1,0,0,1,-14181.2,-23498.8)"
+                                    >
+                                        <path
+                                            d="M14187.2,23504.8L14187.2,23498.8L14191.2,23498.8L14191.2,23504.8L14197.2,23504.8L14197.2,23508.8L14191.2,23508.8L14191.2,23514.8L14187.2,23514.8L14187.2,23508.8L14181.2,23508.8L14181.2,23504.8L14187.2,23504.8Z"
+                                            style="fill:rgb(106,37,30);"></path>
+                                    </g>
+                                </svg>
+                            </button>
+                            <p class="w-8 text-center" id="jumlahPesanan">
+                                <strong>1</strong>
+                            </p>
+                            <p>ekor</p>
+                        </div>
+                    </div>
+                    <div class="col d-flex flex-column align-items-end">
+                        <p class="subtext mb-1">Subtotal:</p>
+                        <p class="h-100 d-grid place-center">
+                            <strong>
+                                RP<span class="subtotal"></span>
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="d-flex justify-content-between align-items-center py-small px-default"
+            >
+                <p><strong>Total</strong></p>
+                <p class="body-xl">
+                    RP<span class="total">6240000</span>
+                </p>
+            </div>
+            <div class="px-default">
+                <a href="/pemesanan">
+                    <button class="btn btn-primary w-100">BUAT PESANAN</button>
+                </a>
+            </div>
+        </section>
+    </main>
+</BaseLayout>

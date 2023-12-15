@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+const pageTitle = "Dev-Qurbanplus | Aqiqah";
+import Carousel from "../components/Carousel.astro";
+import dataAqiqah from "../components/dataAqiqah.js";
+
+import SectionPaket from "../components/aqiqah/SectionPaket.astro";
+
+const aqiqahCarousel = await Astro.glob("../content/aqiqah-carousel/*.md");
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <section class="hero container-fluid g-0">
+        <Carousel carouselContents={aqiqahCarousel} />
+    </section>
+    <main class="bg-marrow pt-5 d-flex flex-column gap-4">
+        <div class="d-flex justify-content-center align-items-center mb-2">
+            <h1 class="display-base text-blood">Pilihan paket Aqiqah</h1>
+        </div>
+        <!--! HANYA PESAN DOMBANYA SAJA -->
+        <SectionPaket data={dataAqiqah[0]} />
+        <!--! Pesan Paket 1 Menu -->
+        <SectionPaket data={dataAqiqah[1]} />
+
+        <!--! Pesan Paket Rice Box -->
+        <SectionPaket data={dataAqiqah[2]} />
+
+        <!--! Pesan Paket Timur Tengah -->
+        <SectionPaket data={dataAqiqah[3]} />
+
+        <!-- <div class="spacer" style="height: 100px;"></div> -->
+
+        <!--? WHATSAPP Button -->
+
+        <div
+            class="d-flex justify-content-end px-default sticky-bottom"
+            style="padding: 20px 20px 20px 0px;"
+        >
+            <div>
+                <a
+                    id="linkWA"
+                    href="https://wa.me/6281293150101?text=Assalamu'alaikum%20admin%20Qurbanplus,%20insyaAllah%20saya%20ingin%20pesan%20Aqiqah."
+                    target="_blank"
+                >
+                    <button
+                        class="btn btn-primary pesan-whatsapp d-flex gap-2 align-items-center"
+                    >
+                        <img src="/assets/icons/ic-whatsapp.svg" />
+                        <p>Pesan via WA</p>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </main>
+</BaseLayout>

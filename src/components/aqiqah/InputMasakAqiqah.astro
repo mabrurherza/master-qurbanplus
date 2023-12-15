@@ -1,0 +1,15 @@
+---
+const { kategori, masakan, target, name } = Astro.props;
+---
+
+<div class="input-masakan-container">
+    <input
+        class={`${target} form-check-input`}
+        type="radio"
+        data-paket-masakan={kategori}
+        name={name}
+        value={masakan}
+        id={`${kategori} ${masakan}`}
+    />
+    <label for={`${kategori}${masakan}`}>{masakan}</label><br />
+</div>

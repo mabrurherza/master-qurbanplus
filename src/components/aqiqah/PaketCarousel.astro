@@ -1,0 +1,45 @@
+---
+const { carousel } = Astro.props;
+console.log(carousel.images.length);
+---
+
+<div
+    id={carousel.untuk}
+    class="carousel slide paket-carousel"
+    data-bs-touch="true"
+>
+    <div class="carousel-indicators">
+        {
+            carousel.images.length == 1
+                ? ""
+                : carousel.images.map((img, index) => (
+                      <button
+                          type="button"
+                          data-bs-target={`#${carousel.untuk}`}
+                          data-bs-slide-to={index}
+                          class={index === 0 ? "active" : ""}
+                          aria-label={`Slide ${index + 1}`}
+                      />
+                  ))
+        }
+    </div>
+    <div class="carousel-inner">
+        {
+            carousel.images.map((img, index) => (
+                <div
+                    class={
+                        index === 0
+                            ? "carousel-item img-carousel-aqiqah active"
+                            : "carousel-item img-carousel-aqiqah"
+                    }
+                >
+                    <img
+                        src={img}
+                        class="d-block w-100 h-100 object-cover"
+                        alt="Beragam pilihan menu aqiqah QurbanPlus: Gulai, Semur, Rendang, Nasi Kotak, Nasi Kebuli"
+                    />
+                </div>
+            ))
+        }
+    </div>
+</div>

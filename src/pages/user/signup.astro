@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../../layout/BaseLayout.astro";
+---
+
+<BaseLayout pageTitle="User Login">
+    <main class="bg-marrow">
+        <div
+            class="dashboard-container max-w-md py-large px-default row g-0 m-auto"
+        >
+            <div class="mb-5 d-flex align-items-center flex-column gap-3">
+                <h1 class="display-base text-blood w-fit">Daftar Akun Baru</h1>
+                <p class="w-fit">
+                    Sudah punya akun? <a href="/user/login" class="link-gold"
+                        >Login.</a
+                    >
+                </p>
+            </div>
+
+            <div>
+                <fieldset class="d-flex flex-column gap-4">
+                    <div>
+                        <label for="namaUser" class="form-label"
+                            >Nama Lengkap</label
+                        >
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="namaUser"
+                            value=""
+                            placeholder="Nama Lengkap"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label for="exampleFormControlInput1" class="form-label"
+                            >Email</label
+                        >
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="alamatEmail"
+                            value=""
+                            placeholder="Email Aktif"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label for="nomorWhatsapp" class="form-label"
+                            >Nomor Handphone</label
+                        >
+                        <input
+                            type="tel"
+                            class="form-control"
+                            id="nomorWhatsapp"
+                            inputmode="numeric"
+                            minlength="10"
+                            placeholder="Nomor Handphone Aktif"
+                            required
+                        />
+                    </div>
+
+                    <div class="alert alert-info body-sm" role="alert">
+                        Pastikan alamat email yang dimasukkan adalah benar.
+                        Alamat email akan digunakan sebagai username login akun
+                        QurbanPlus. Dan password akan dikirim melalui email.
+                    </div>
+
+                    <form action="/user">
+                        <button class="btn btn-primary w-full">DAFTAR</button>
+                    </form>
+                </fieldset>
+            </div>
+        </div>
+    </main>
+</BaseLayout>

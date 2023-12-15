@@ -1,0 +1,274 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+const pageTitle = "Homepage Qurbanplus";
+
+import Carousel from "../components/Carousel.astro";
+import CarouselHighlightHewan from "../components/CarouselHighlightHewan.astro";
+
+const carouselContents = await Astro.glob("./homepage-carousel/*.md");
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <section class="hero container-fluid g-0">
+    <Carousel carouselContents={carouselContents} />
+  </section>
+
+  <section
+    class="bg-marrow row place-center flex-col text-center px-default py-xl"
+  >
+    <h1 class="text-blood display-base max-w-md p-0">
+      Ini Tentang Pengorbanan
+    </h1>
+    <p class="max-w-sm mb-2 p-0">
+      Kita bisa sampai sejauh ini karena pengorbanan manusia yang rela
+      mengorbankan hal yang paling beliau cintai, bukan waktu, harta, atau
+      tenaga, melainkan sang buah hati. Mereka adalah sosok Nabi Ibrahim dan
+      Ismail alaihimussalaam.
+    </p>
+    <p class="max-w-sm p-0">
+      Inilah spirit yang ingin kita angkat di tiap Festival Qurban dan Takbir
+      kita: spirit berkorban, mengorbankan apa yang kita bisa — waktu, harta,
+      tenaga, atau yang lainnya.
+    </p>
+  </section>
+
+  <section class="bg-bone row flex-col place-center px-default py-large">
+    <div class="max-w-md text-center mb-3">
+      <p class="eyebrow-sm text-gold mb-2">
+        Festival Semarak Qurban dan Takbir
+      </p>
+      <h1 class="display-base text-blood">
+        Pengalaman Idul Adha <br /> yang beda
+      </h1>
+    </div>
+    <div class="row place-center p-0 g-0">
+      <div class="values-container row max-w-xl p-0">
+        <div class="col-12 col-md p-0">
+          <img
+            src="/assets/images/usp/qurbanplus-value-1.jpg"
+            alt="Value Berqurban di QurbanPlus - Sembelih sendiri hewan qurban"
+            class="img-fluid border border-bottom-0 border-gold"
+          />
+          <div class="d-flex border border-gold align-items-center">
+            <div
+              class="border-end border-gold d-flex place-center p-4 h-100"
+              style="min-height: 120px;"
+            >
+              <p class="eyebrow-lg text-gold">01</p>
+            </div>
+            <div class="p-3">
+              <p class="body-lg">
+                Menyembelih Sendiri Dipandu Tenaga Ahli atau Diwakilkan
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md p-0">
+          <img
+            src="/assets/images/usp/qurbanplus-value-2.jpg"
+            alt="Value Berqurban di QurbanPlus - Sembelih sendiri hewan qurban"
+            class="img-fluid border border-bottom-0 border-gold"
+          />
+          <div class="d-flex border border-gold align-items-center">
+            <div
+              class="border-end border-gold d-flex place-center p-4 h-100"
+              style="min-height: 120px;"
+            >
+              <p class="eyebrow-lg text-gold">02</p>
+            </div>
+            <div class="p-3">
+              <p class="body-lg">Suasana Indah Dengan Takbir Sepanjang Hari</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md p-0">
+          <img
+            src="/assets/images/usp/qurbanplus-value-3.jpg"
+            alt="Value Berqurban di QurbanPlus - Sembelih sendiri hewan qurban"
+            class="img-fluid border border-bottom-0 border-gold"
+          />
+          <div class="d-flex border border-gold align-items-center">
+            <div
+              class="border-end border-gold d-flex place-center p-4 h-100"
+              style="min-height: 120px;"
+            >
+              <p class="eyebrow-lg text-gold">03</p>
+            </div>
+            <div class="p-3">
+              <p class="body-lg">
+                Optimalisasi Kulit Qurban Menjadi Tas untuk Ahli Ilmu
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="row place-center pt-md pb-lg bg-bone">
+    <div class="max-w-md text-center mb-5 row place-center px-default">
+      <h1 class="display-base text-blood">
+        Keindahan Festival Semarak Qurban dan Takbir 1444H
+      </h1>
+      <p class="max-w-sm">
+        Semoga Allah beri kita kesempatan berqurban bersama di Idul Adha
+        berikutnya!
+      </p>
+    </div>
+
+    <div class="ticker-container p-0">
+      <div class="ticker-tape">
+        <div class="slide-track">
+          <div class="slide">
+            <img
+              src="/assets/images/ticker-homepage/ticker-1.jpg"
+              width="320"
+              height="400"
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="/assets/images/ticker-homepage/ticker-2.jpg"
+              width="320"
+              height="400"
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="/assets/images/ticker-homepage/ticker-3.jpg"
+              width="320"
+              height="400"
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="/assets/images/ticker-homepage/ticker-4.jpg"
+              width="320"
+              height="400"
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="/assets/images/ticker-homepage/ticker-5.jpg"
+              width="320"
+              height="400"
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="/assets/images/ticker-homepage/ticker-1.jpg"
+              width="320"
+              height="400"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--! DOMBA PILIHAN HIGHLIGHT -->
+  <section class="w-100 py-large bg-marrow">
+    <CarouselHighlightHewan />
+  </section>
+
+  <!--! DIVIDER -->
+
+  <section class="story row bg-blood align-items-center text-bone">
+    <div
+      class="col-12 col-md-6 d-flex flex-column place-center h-fit text-center"
+    >
+      <p class="eyebrow-lg">QURBANPLUS STORY</p>
+      <h1 class="display-lg">Perjalanan QurbanPlus</h1>
+      <p class="center-justified max-w-sm">
+        Qurbanplus hadir sejak tahun 1441 hijriah untuk sebuah ikhtiar dalam
+        menyemarakkan serta mengambil bagian mengagungkan syiar Islam pada Hari
+        Raya Idul Adha untuk melengkapi kebutuhan teman-teman dalam menegakkan
+        ibadah Qurban.
+      </p>
+      <div class="spacer-32"></div>
+      <a href="/story" class="slider-cta">Baca Story Kami</a>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <img
+        src="/assets/images/story-homepage.jpg"
+        alt=""
+        class="img-fluid p-0"
+      />
+    </div>
+  </section>
+
+  <section class="row bg-bone place-center g-0 gap-20px px-default py-large">
+    <h1 class="col-12 col-md display-base text-blood text-center">
+      Produk Kami
+    </h1>
+    <div
+      class="col-12 col-md d-flex place-center relative aspect-square rounded-sm"
+    >
+      <a
+        href="/qurban"
+        class="card-link rounded-lg"
+        title="Pilihan hewan qurban"
+      >
+        <div class="layer h-100 w-100 z-1">
+          <img
+            class="layer img-fluid h-100 object-cover"
+            src="/assets/images/bw-placeholder.jpg"
+            alt="Qurbanplus - Pilih hewan qurban"
+          />
+          <div class="layer bg-blood multiply"></div>
+          <div class="layer texture-sm"></div>
+        </div>
+        <div class="z-3">
+          <a href="/qurban">
+            <p class="display-base text-bone">Qurban</p>
+          </a>
+        </div>
+      </a>
+    </div>
+    <div
+      class="col-12 col-md d-flex place-center g-0 relative aspect-square rounded-sm"
+    >
+      <a href="/aqiqah" class="card-link" title="Pilihan menu aqiqah">
+        <div class="layer h-100 w-100 z-1">
+          <img
+            class="layer img-fluid h-100 object-cover"
+            src="/assets/images/bw-placeholder.jpg"
+            alt="Qurbanplus - Pilih menu Aqiqah QurbanPlus"
+          />
+          <div class="layer bg-gold multiply"></div>
+          <div class="layer texture-sm"></div>
+        </div>
+        <div class="z-3">
+          <a href="/aqiqah">
+            <p class="display-base text-bone">Aqiqah</p>
+          </a>
+        </div>
+      </a>
+    </div>
+    <div
+      class="col-12 col-md d-flex place-center relative aspect-square rounded-sm"
+    >
+      <a
+        href="/shop"
+        class="card-link"
+        title="Pilihan produk merchandise QurbanPlus"
+      >
+        <div class="layer h-100 w-100 z-1">
+          <img
+            class="layer img-fluid h-100 object-cover"
+            src="/assets/images/bw-placeholder.jpg"
+            alt="Qurbanplus - Belanja Merchandise QurbanPlus"
+          />
+          <div class="layer bg-green multiply"></div>
+          <div class="layer texture-sm"></div>
+        </div>
+        <div class="z-3">
+          <a href="">
+            <p class="display-base text-bone">Shop</p>
+          </a>
+        </div>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

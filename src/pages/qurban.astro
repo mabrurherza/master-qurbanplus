@@ -1,0 +1,115 @@
+---
+import { getCollection } from "astro:content";
+
+import BaseLayout from "../layout/BaseLayout.astro";
+const pageTitle = "QurbanPlus-Jelajahi Pilihan Hewan-Hewan Qurban Kami";
+
+import Carousel from "../components/Carousel.astro";
+const qurbanCarousel = await Astro.glob("./qurban-carousel/*.md");
+
+import CardHewan from "../components/CardHewan.astro";
+const allHewan = await getCollection("hewan");
+
+import Questions from "../misc/Questions.js";
+const shortFAQ = Questions.slice(0, 4);
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <section class="hero container-fluid g-0">
+        <Carousel carouselContents={qurbanCarousel} />
+    </section>
+    <section id="HewanCollection" class="bg-marrow">
+        <div class="filter-container d-flex flex-column place-center gap-3">
+            <!-- <p class="eyebrow-sm text-gold">Tampilkan:</p> -->
+            <div class="btn-wrapper px-default gap-4 h-8 h-10">
+                <button
+                    onclick="location.href='#HewanCollection'"
+                    type="button"
+                    id="showAllButton"
+                    class="btn-filter btn-filter-active"
+                >
+                    Semua
+                </button>
+                <button
+                    onclick="location.href='#HewanCollection'"
+                    type="button"
+                    id="categoryDombaButton"
+                    class="btn-filter"
+                >
+                    Domba</button
+                >
+                <button
+                    onclick="location.href='#HewanCollection'"
+                    type="button"
+                    id="categorySapiUtuhButton"
+                    class="btn-filter"
+                >
+                    Sapi Utuh</button
+                >
+                <button
+                    onclick="location.href='#HewanCollection'"
+                    type="button"
+                    id="categorySapiKolektifButton"
+                    class="btn-filter"
+                >
+                    Sapi Kolektif</button
+                >
+            </div>
+            <div
+                style="height: 1px; width: 100%; position: absolute; bottom: 0; background:rgba(0, 0, 0, 0.2);"
+            >
+            </div>
+        </div>
+        <div class="collection-list px-default py-small">
+            {allHewan.map((hewan) => <CardHewan DataHewan={hewan} />)}
+        </div>
+    </section>
+
+    <section class="px-default py-large">
+        <h2 class="display-base text-blood text-center">
+            Pertanyaan yang sering ditanyakan
+        </h2>
+        <section class="mt-5 max-w-md m-auto">
+            <h2 class="body-xl text-gold text-center pb-3">
+                Pertanyaan terkait penyelenggaraan qurban
+            </h2>
+
+            <div class="accordion" id="FAQqurban">
+                {
+                    shortFAQ.map((item, index) => (
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button
+                                    class="accordion-button text-semibold collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target={`#collapse${index}`}
+                                    aria-expanded="true"
+                                    aria-controls={`collapse${index}`}
+                                >
+                                    {item.Question}
+                                </button>
+                            </h2>
+                            <div
+                                id={`collapse${index}`}
+                                class="accordion-collapse collapse"
+                                data-bs-parent="#FAQqurban"
+                            >
+                                <div class="accordion-body">
+                                    <p class="body-base">{item.Answer}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+            <div class="d-flex place-center py-small">
+                <a href="/faq" class="link-gold text-center w-100"
+                    >Lihat semua FAQ</a
+                >
+            </div>
+        </section>
+    </section>
+</BaseLayout>
+
+<style></style>

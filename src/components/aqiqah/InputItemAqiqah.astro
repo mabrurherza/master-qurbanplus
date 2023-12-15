@@ -1,0 +1,51 @@
+---
+const { name, tipe, bobot, porsi, harga1, harga2, kategori, jenis } =
+    Astro.props;
+---
+
+<div class="input-container border-bottom border-bone">
+    <div class="input-legend">
+        <legend>{tipe}</legend>
+        <p class="subtext">±{bobot}kg</p>
+        {porsi ? <p class="subtext">{porsi} porsi/ekor</p> : <></>}
+    </div>
+
+    <div class="radio-options">
+        <div class="option-item">
+            <input class="hewan-select form-check-input mt-0"
+                type="radio"
+                id={kategori + jenis}
+                name={name}
+                data-kategori={kategori}
+                data-jenis-domba={jenis}
+                value="1"
+            />
+            <label for={kategori + jenis}>
+                <p class="body-sm">1 ekor</p>
+                <p class="text-bold">RP{new Intl.NumberFormat("id-ID").format(harga1)}</p>
+            </label>
+        </div>
+
+        <div class="option-item">
+            <input class="hewan-select form-check-input mt-0"
+            type="radio"
+            id={kategori + jenis}
+            name={name}
+            data-kategori={kategori}
+            data-jenis-domba={jenis}
+            value="2"
+        />
+            <label for={kategori + jenis}>
+                <p class="body-sm">2 ekor</p>
+                <p class="text-bold">RP{new Intl.NumberFormat("id-ID").format(harga2)}</p>
+            </label>
+           
+        </div>
+    </div>
+</div>
+
+
+<style>
+
+    
+</style>

@@ -1,0 +1,208 @@
+---
+import Label from "../Label.astro";
+
+const {
+    tanggal,
+    status,
+    statusStyle,
+    kode,
+    hewan,
+    bayar,
+    showDeadline,
+    deadline,
+    showInvoice,
+    showKodeBayar,
+} = Astro.props;
+
+const langkahBayar = [
+    {
+        nama: "Cara bayar dengan CIMB Clicks",
+        langkah: [
+            "Login ke CIMB clicks ",
+            "Pilih menu Bayar Tagihan / Pay Bills",
+            "Pilih Rekening Sumber / Source Account dan Jenis Pembayaran / Payment Type > Virtual Account",
+            "Masukkan nomor virtual account di atas",
+            "Nomor serta nama virtual account dan jumlah billing akan ditampilkan pada layar",
+            "Masukkan 6 digit mPIN dan tekan tombol Submit",
+            "Konfirmasi pembayaran ditampilkan pada layar",
+        ],
+    },
+    {
+        nama: "GO Mobile CIMB NIAGA",
+        langkah: [
+            "Login ke Go Mobile",
+            "Pilih menu TRANSFER",
+            "Pilih Transfer to Other CIMB Niaga Account",
+            "Pilih rekening sumber Anda: CASA atau Rekening Ponsel",
+            "Pilih CASA dan masukkan nomor virtual account di atas",
+            "Masukkan jumlah pembayaran sesuai tagihan",
+            "Masukkan Mobile Banking PIN",
+            "Konfirmasi pembayaran ditampilkan pada layar",
+        ],
+    },
+    {
+        nama: "ATM CIMB",
+        langkah: [
+            "Masukkan Kartu ATM dan PIN CIMB",
+            "Pilih menu Pembayaran > Lanjut > Virtual Account",
+            "Masukkan nomor virtual account di atas",
+            "Pilih rekening debit",
+            "Nomor, nama virtual account dan jumlah billing ditampilkan pada layar",
+            "Pilih OK untuk melakukan pembayaran",
+            "Konfirmasi pembayaran ditampilkan pada layar",
+        ],
+    },
+    {
+        nama: "ATM Bersama/Prima",
+        langkah: [
+            "Pilih menu TRANSFER > TRANSFER KE BANK LAIN",
+            "Masukkan kode bank CIMB Niaga: 022",
+            "Masukkan jumlah pembayaran sesuai tagihan",
+            "Masukkan nomor virtual account di atas",
+            "Ikuti instruksi untuk menyelesaikan transaksi",
+            "Konfirmasi pembayaran ditampilkan pada layar",
+        ],
+    },
+    {
+        nama: "Internet Banking Lainnya",
+        langkah: [
+            "Login ke Internet Banking bank pilihan Anda",
+            "Pilih menu transfer ke Bank Lain Online",
+            "Pilih bank tujuan Bank CIMB Niaga (kode bank: 022)",
+            "Masukkan nomor virtual account di atas",
+            "Masukkan jumlah pembayaran sesuai tagihan",
+            "Nomor, nama virtual account dan jumlah billing ditampilkan pada layar",
+            "Ikuti instruksi untuk menyelesaikan transaksi",
+            "Konfirmasi pembayaran ditampilkan pada layar",
+        ],
+    },
+];
+---
+
+<div class="bg-white p-3">
+    <div class="d-flex align-items-center gap-2">
+        <Label text={status} style={statusStyle} />
+        <div class="d-flex gap-1">
+            <p class="body-sm">Dibuat:</p>
+            <p class="body-sm">{tanggal}</p>
+        </div>
+    </div>
+
+    <div class="mt-3 d-flex flex-column flex-md-row gap-3 gap-md-5">
+        <div>
+            <div>
+                <p class="subtext">
+                    Kode order: <a href="" class="subtext link-primary"
+                        >{kode}</a
+                    >
+                </p>
+            </div>
+            <a href="" class="link-dark link-underline"
+                ><p class="body-lg">{hewan}</p></a
+            >
+        </div>
+
+        <div class="order-detail-item">
+            <div class="d-flex gap-2">
+                <p class="subtext">Total pembayaran:</p>
+            </div>
+            <p class="body-lg">{bayar}</p>
+        </div>
+
+        <div class=`order-detail-item ${showDeadline ? "" : "d-none"}`>
+            <div class="d-flex gap-2">
+                <p class="subtext">Bayar sebelum:</p>
+            </div>
+            <p class="body-lg">{deadline}</p>
+        </div>
+
+        <div class=`order-detail-item ${showInvoice ? "" : "d-none"}`>
+            <div class="d-flex gap-2">
+                <p class="subtext">Invoice:</p>
+            </div>
+            <a href="" class="link-dark link-underline"
+                ><p class="body-lg">INVQP/20231223</p></a
+            >
+        </div>
+
+        <div class=`order-detail-item ${showKodeBayar ? "" : "d-none"}`>
+            <div class="d-flex gap-2">
+                <p class="subtext">Kode Bayar:</p>
+            </div>
+            <p class="body-lg">{"4749-478226147110"}</p>
+            <a
+                class="subtext link-primary pointer"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal">Cara bayar</a
+            >
+        </div>
+
+        <!-- Modal Cara Bayar-->
+        <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-bone">
+                        <h1
+                            class="body-lg text-gold mb-0"
+                            id="exampleModalLabel"
+                        >
+                            Cara Pembayaran
+                        </h1>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-0">
+                        <div>
+                            <div class="accordion" id="CaraBayar">
+                                {
+                                    langkahBayar.map((item, index) => (
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button
+                                                    class="accordion-button  bg-marrow text-semibold collapsed"
+                                                    type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target={`#collapse${index}`}
+                                                    aria-expanded="true"
+                                                    aria-controls={`collapse${index}`}
+                                                >
+                                                    {item.nama}
+                                                </button>
+                                            </h2>
+                                            <div
+                                                id={`collapse${index}`}
+                                                class="accordion-collapse collapse"
+                                                data-bs-parent="#CaraBayar"
+                                            >
+                                                {" "}
+                                                <ol
+                                                    class="accordion-body"
+                                                    style="padding-left: 32px"
+                                                >
+                                                    {item.langkah.map((i) => (
+                                                        <li class="body-base">
+                                                            {i}
+                                                        </li>
+                                                    ))}
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

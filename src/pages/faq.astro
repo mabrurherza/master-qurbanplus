@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+const pageTitle = "Homepage Qurbanplus";
+
+import Questions from "../misc/Questions.js";
+import QuestionsTabungan from "../misc/QuestionsTabungan.js";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <main class="py-large">
+        <h1 class="display-base text-center text-blood">
+            Pertanyaan yang Sering Ditanyakan
+        </h1>
+
+        <section class="mt-5 max-w-md m-auto px-default">
+            <h2 class="body-lg text-bold text-gold text-center pb-3">
+                Pertanyaan terkait penyelenggaraan qurban
+            </h2>
+
+            <div class="accordion" id="FAQqurban">
+                {
+                    Questions.map((item, index) => (
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button
+                                    class="accordion-button text-semibold collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target={`#collapse${index}`}
+                                    aria-expanded="true"
+                                    aria-controls={`collapse${index}`}
+                                >
+                                    {item.Question}
+                                </button>
+                            </h2>
+                            <div
+                                id={`collapse${index}`}
+                                class="accordion-collapse collapse"
+                                data-bs-parent="#FAQqurban"
+                            >
+                                <div class="accordion-body">
+                                    <p class="body-base">{item.Answer}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </section>
+
+        <section id="FAQtabungan" class="mt-5 max-w-md m-auto px-default">
+            <h2
+                id="FAQtabungan"
+                class="body-lg text-bold text-gold text-center pb-3"
+            >
+                Pertanyaan tabungan Qurban
+            </h2>
+
+            <div class="accordion" id="QuestionsTabunganAccordion">
+                {
+                    QuestionsTabungan.map((item, index) => (
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button
+                                    class="accordion-button text-semibold collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target={`#collapse${20 + index}`}
+                                    aria-expanded="true"
+                                    aria-controls={`collapse${20 + index}`}
+                                >
+                                    {item.Question}
+                                </button>
+                            </h2>
+                            <div
+                                id={`collapse${20 + index}`}
+                                class="accordion-collapse collapse"
+                                data-bs-parent="#QuestionsTabunganAccordion"
+                            >
+                                <div class="accordion-body">
+                                    <p class="body-base">{item.Answer}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </section>
+    </main>
+</BaseLayout>

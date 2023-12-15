@@ -1,0 +1,207 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+const getKotaDKI = await fetch(
+    "https://emsifa.github.io/api-wilayah-indonesia/api/regencies/31.json",
+).then((response) => response.json());
+
+const regencyIds = [3101, 3171, 3172, 3174, 3173, 3175, 3201, 3215];
+const apiUrl = "https://emsifa.github.io/api-wilayah-indonesia/api/districts/";
+
+async function fetchRegencyData(regencyId) {
+    try {
+        const response = await fetch(`${apiUrl}${regencyId}.json`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data for regency ID ${regencyId}`);
+        }
+        const regencyData = await response.json();
+        return regencyData;
+    } catch (error) {
+        console.error("Error fetching regency data:", error);
+        return null;
+    }
+}
+
+async function fetchAllRegencyData(ids) {
+    const regencyDataArray = [];
+
+    for (const id of ids) {
+        const regencyData = await fetchRegencyData(id);
+        if (regencyData) {
+            regencyDataArray.push(regencyData);
+        }
+    }
+
+    return regencyDataArray;
+}
+
+// Fetch data for all regencies
+fetchAllRegencyData(regencyIds)
+    .then((data) => {
+        console.log("Data for all regencies:", data);
+        // Handle the data here
+    })
+    .catch((error) => {
+        console.error("Error fetching all regency data:", error);
+    });
+
+// Id jakart: 32, Jawa Barat 32
+---
+
+<BaseLayout>
+    <div class="nav-spacer"></div>
+
+    <section>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
+                <title>Product Filtering Example</title>
+                <style>
+                    /* Add your CSS styles here for product items and filtering options */
+                </style>
+            </head>
+            <body>
+                <h1>Product Listing</h1>
+
+                <!-- Filtering Buttons -->
+                <button id="showAllButton">Show All Products</button>
+                <button id="categoryShoesButton">Category: Shoes</button>
+                <button id="categoryTshirtButton">Category: T-Shirt</button>
+                <button id="categoryPantsButton">Category: Pants</button>
+
+                <!-- Product Listing -->
+                <div class="product" data-category="Shoes">
+                    <h3>Product 1</h3>
+                    <p>Category: Shoes</p>
+                </div>
+                <div class="product" data-category="T-Shirt">
+                    <h3>Product 2</h3>
+                    <p>Category: T-Shirt</p>
+                </div>
+                <div class="product" data-category="Pants">
+                    <h3>Product 3</h3>
+                    <p>Category: Pants</p>
+                </div>
+                <!-- Add more product items as needed -->
+
+                <script>
+                    // JavaScript for filtering goes here
+                </script>
+            </body>
+        </html>
+    </section>
+    <section>
+        <h1>Fetch data Kota Indonesia</h1>
+        <hr />
+    </section>
+</BaseLayout>
+
+<style>
+    /* Add your CSS styles here for product items and filtering options */
+    .active-filter-button {
+        background-color: #007bff;
+        color: #fff;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    // Select all filter buttons
+    const showAllButton = document.getElementById("showAllButton");
+    const categoryShoesButton = document.getElementById("categoryShoesButton");
+    const categoryTshirtButton = document.getElementById(
+        "categoryTshirtButton",
+    );
+    const categoryPantsButton = document.getElementById("categoryPantsButton");
+
+    // Select all product items
+    const products = document.querySelectorAll(".product");
+
+    // Event listeners for filter buttons
+    showAllButton.addEventListener("click", function () {
+        setActiveButton(showAllButton);
+        filterProducts("All");
+        updateURL("All");
+    });
+
+    categoryShoesButton.addEventListener("click", function () {
+        setActiveButton(categoryShoesButton);
+        filterProducts("Shoes");
+        updateURL("Shoes");
+    });
+
+    categoryTshirtButton.addEventListener("click", function () {
+        setActiveButton(categoryTshirtButton);
+        filterProducts("T-Shirt");
+        updateURL("T-Shirt");
+    });
+
+    categoryPantsButton.addEventListener("click", function () {
+        setActiveButton(categoryPantsButton);
+        filterProducts("Pants");
+        updateURL("Pants");
+    });
+
+    function filterProducts(selectedCategory) {
+        products.forEach((product) => {
+            const productCategory = product.getAttribute("data-category");
+            if (
+                selectedCategory === "All" ||
+                productCategory === selectedCategory
+            ) {
+                product.style.display = "block"; // Show the product
+            } else {
+                product.style.display = "none"; // Hide the product
+            }
+        });
+    }
+
+    function updateURL(category) {
+        // Update the URL parameter to the selected category
+        const url = new URL(window.location.href);
+        url.searchParams.set("category", category);
+        window.history.replaceState(null, "", url);
+    }
+
+    function setActiveButton(activeButton) {
+        // Remove 'active-filter-button' class from all buttons
+        const filterButtons = [
+            showAllButton,
+            categoryShoesButton,
+            categoryTshirtButton,
+            categoryPantsButton,
+        ];
+
+        filterButtons.forEach((button) => {
+            button.classList.remove("active-filter-button");
+        });
+
+        // Add 'active-filter-button' class to the active button
+        activeButton.classList.add("active-filter-button");
+    }
+
+    // Initial URL parsing and filtering
+    const initialCategory = new URLSearchParams(window.location.search).get(
+        "category",
+    );
+    if (initialCategory) {
+        // Determine the initial active button and style it
+        let initialActiveButton;
+        if (initialCategory === "All") {
+            initialActiveButton = showAllButton;
+        } else if (initialCategory === "Shoes") {
+            initialActiveButton = categoryShoesButton;
+        } else if (initialCategory === "T-Shirt") {
+            initialActiveButton = categoryTshirtButton;
+        } else if (initialCategory === "Pants") {
+            initialActiveButton = categoryPantsButton;
+        }
+        setActiveButton(initialActiveButton);
+
+        // Filter products based on the initial category
+        filterProducts(initialCategory);
+    }
+</script>

@@ -1,0 +1,101 @@
+---
+const hewanPilihan = [
+    {
+        slug: "dorper-gold",
+        bobot: "40",
+        nama: "Cross Dorper F1 Gold",
+        harga: 5700000,
+        image: "/assets/images/hewan/dorper-gold.jpg"
+    },
+
+    {
+        slug: "diamond-garut",
+        bobot: "55",
+        nama: "Diamond Garut",
+        harga: 6240000,
+        image: "/assets/images/hewan/diamond-garut.jpg"
+    },
+
+    {
+        slug: "legend",
+        bobot: "40",
+        nama: "Legend",
+        harga: 3996000,
+        image: "/assets/images/hewan/domba-legend.jpg"
+    },
+
+]
+---
+
+<div id="carouselHewanHighlight" class="carousel slide">
+    <div class="carousel-inner">
+        {hewanPilihan.map((item, index) => (
+                  <div class={`carousel-item ${index === 0 ? "active" : ""}`}>
+            <div class="row max-w-lg m-auto gap-3">
+                <!-- Container for image -->
+                <div class="col-12 col-md px-default">
+                    <img
+                        class="aspect-square w-100 h-100"
+                        src={item.image}
+                        alt="Hewan qurban dan aqiqah terbaik pilihan QurbanPlus"
+                    />
+                </div>
+                <!-- Container for detail hewan -->
+                <div
+                    class="col-12 col-md px-default text-center d-flex flex-column gap-2 gap-md-3"
+                >
+                    <p class="eyebrow-sm text-gold">± {item.bobot}kg</p>
+                    <p class="display-base text-blood fixed-height-sm">
+                        {item.nama}
+                    </p>
+                    <div class="spacer-18"></div>
+                    <p class="title-lg text-blood mb-2">
+                        Rp{new Intl.NumberFormat("id").format(item.harga)}
+                    </p>
+                    <div class="d-flex flex-column gap-3">
+                        <form action="/checkout">
+                        <button class="btn btn-primary w-100">PESAN</button>
+                    </form>
+                    <form action={`/qurban/${item.slug}`}>
+                        <button class="btn btn-secondary w-100"
+                            >HARGA TABUNGAN</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        ))}
+
+    </div>
+
+    <div class="arrow-control">
+        <div class="empty"></div>
+        <div class="arrow-control-wrapper">
+            <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselHewanHighlight"
+                data-bs-slide="prev"
+            >
+                <span class="carousel-control-prev-icon" aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+
+            <a href="/qurban" class="link-gold">
+                <p>Lihat Semua Hewan</p>
+            </a>
+            <button
+                class="carousel-control-next bg-gold"
+                type="button"
+                data-bs-target="#carouselHewanHighlight"
+                data-bs-slide="next"
+            >
+                <span class="carousel-control-next-icon" aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>

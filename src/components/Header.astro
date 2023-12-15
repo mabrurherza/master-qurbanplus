@@ -1,0 +1,115 @@
+---
+const menus = [
+  { name: "Beranda", path: "/", active: true },
+  { name: "Qurban", path: "/qurban", active: true },
+  { name: "Aqiqah", path: "/aqiqah", active: true },
+  { name: "Shop", path: "/shop", active: true },
+  { name: "Story", path: "/story", active: true },
+];
+---
+
+<header>
+  <nav
+    class="navbar row g-0 justify-contents-center align-items-center fixed-top z-5"
+  >
+    <div class="col z-3" id="NavToggler">
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <ul class="nav-list">
+      {
+        menus.map((menu) =>
+          menu.active ? (
+            <li class="nav-link">
+              <a class="nav-link" href={menu.path}>
+                {"\u00A0" + menu.name + "\u00A0"}
+              </a>
+            </li>
+          ) : (
+            <li class="nav-link">
+              <a class="nav-link-mute" href="">
+                {"\u00A0" + menu.name + "\u00A0"}
+              </a>
+            </li>
+          ),
+        )
+      }
+      <a href="/faq" class="nav-link nav-faq">&nbsp;FAQ&nbsp;</a>
+      <a
+        class="nav-whatsapp nav-link"
+        href="https://wa.me/+62081293150101?text=Assalamualaikum%20admin%20QurbanPlus"
+        target="_blank"
+        title="Hubungin admin QurbanPlus via whatsapp untuk informasi lebih lanjut."
+        >WA: 0812923150101</a
+      >
+    </ul>
+
+    <div class="col d-flex justify-content-center z-3">
+      <a href="/" class="">
+        <img
+          src="/assets/logo-shield-bone.svg"
+          alt="Official website of QurbanPlus"
+          class="nav-logo"
+        /></a
+      >
+    </div>
+
+    <div class="col z-3 mr-5 d-flex justify-content-end gap-2">
+      <a
+        href="https://wa.me/+62081293150101?text=Assalamualaikum%20admin%20QurbanPlus"
+        target="_blank"
+        title="Hubungin admin QurbanPlus via whatsapp untuk informasi lebih lanjut."
+      >
+        <svg
+          width="32px"
+          height="32px"
+          viewBox="0 0 84 84"
+          style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+          id="whatsapp-logo"
+        >
+          <g transform="matrix(1,0,0,1,-2403.73,-660.581)">
+            <g transform="matrix(1,0,0,1,-0.583057,0)">
+              <g
+                id="whatsapp"
+                transform="matrix(3.46853,0,0,3.46853,2404.31,653.97)"
+              >
+                <path
+                  onmouseover="
+                  this.style.fill = '#F7F4ED'
+                  "
+                  onmouseout="this.style.fill='#dcd3c3'"
+                  d="M15.391,15.219C15.657,15.219 18.203,16.547 18.313,16.735C18.344,16.813 18.344,16.907 18.344,16.969C18.344,17.36 18.219,17.797 18.078,18.157C17.719,19.032 16.265,19.594 15.375,19.594C14.625,19.594 13.078,18.938 12.406,18.625C10.172,17.609 8.781,15.875 7.437,13.891C6.843,13.016 6.312,11.938 6.328,10.86L6.328,10.735C6.359,9.704 6.734,8.969 7.484,8.266C7.718,8.047 7.968,7.922 8.296,7.922C8.483,7.922 8.671,7.969 8.874,7.969C9.296,7.969 9.374,8.094 9.53,8.5C9.639,8.766 10.436,10.891 10.436,11.047C10.436,11.641 9.358,12.313 9.358,12.672C9.358,12.75 9.389,12.828 9.436,12.906C9.78,13.64 10.436,14.484 11.03,15.047C11.749,15.735 12.514,16.188 13.389,16.625C13.498,16.688 13.608,16.734 13.733,16.734C14.202,16.734 14.983,15.218 15.389,15.218L15.391,15.219ZM12.219,23.5C17.625,23.5 22.031,19.094 22.031,13.688C22.031,8.282 17.625,3.876 12.219,3.876C6.813,3.876 2.407,8.282 2.407,13.688C2.407,15.751 3.063,17.766 4.282,19.438L3.048,23.079L6.829,21.876C8.423,22.923 10.313,23.501 12.22,23.501L12.219,23.5ZM12.219,1.906C18.719,1.906 24,7.187 24,13.687C24,20.187 18.719,25.468 12.219,25.468C10.235,25.468 8.266,24.968 6.516,23.999L-0,26.093L2.125,19.765C1.016,17.937 0.438,15.827 0.438,13.687C0.438,7.187 5.719,1.906 12.219,1.906Z"
+                  style="fill:rgb(220,211,195);fill-rule:nonzero;"></path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </a>
+      <a href="/user">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 62 62"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          id="user-icon"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            onmouseover="
+                  this.style.fill = '#F7F4ED'
+                  "
+            d="M4.91309 47.298C1.80309 42.505 0.00292969 36.792 0.00292969 30.661C0.00292969 13.739 13.7431 6.10352e-05 30.6631 6.10352e-05C47.5831 6.10352e-05 61.323 13.739 61.323 30.661C61.323 36.792 59.5231 42.505 56.4131 47.298C50.9531 55.735 41.4531 61.321 30.6631 61.321C19.8731 61.321 10.3731 55.735 4.91309 47.298ZM8.66309 41.809C12.7331 49.824 21.0631 55.321 30.6631 55.321C40.2631 55.321 48.5831 49.824 52.6631 41.809C47.3231 35.647 39.4431 31.746 30.6631 31.746C21.8831 31.746 14.0031 35.647 8.66309 41.809ZM30.6631 9.93903C25.4231 9.93903 21.1631 14.195 21.1631 19.437C21.1631 24.679 25.4231 28.9351 30.6631 28.9351C35.9031 28.9351 40.1631 24.679 40.1631 19.437C40.1631 14.195 35.9031 9.93903 30.6631 9.93903Z"
+            fill="#DCD3C3"></path>
+        </svg>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script></script>

@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layout/BaseLayout.astro";
+const allArtikels = await Astro.glob("./*.md");
+---
+
+<BaseLayout pageTitle="Artikel QurbanPlus">
+    <div class="bg-marrow">
+        <main class="py-large max-w-lg px-default m-auto">
+            <h1
+                class="display-base text-blood pb-2 mb-5 border-bottom border-bone"
+            >
+                Semua Artikel
+            </h1>
+            <div class="d-flex flex-column gap-5">
+                {
+                    allArtikels.map((artikel) => (
+                        <div class="d-flex gap-2">
+                            <img
+                                src={`/assets/images${artikel.frontmatter.thumb}`}
+                                alt="Thumbnail artikel QurbanPlus"
+                                class="aspect-portrait col-4"
+                            />
+                            <div class="col-8 d-flex flex-column justify-content-end">
+                                <a
+                                    href={`/artikel/${artikel.frontmatter.slug}`}
+                                >
+                                    <h2 class="display-sm text-black">
+                                        {artikel.frontmatter.title}
+                                    </h2>
+                                </a>
+                                <a
+                                    href={`/artikel/${artikel.frontmatter.slug}`}
+                                    class="link-gold link-underline"
+                                >
+                                    Baca artikel
+                                </a>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </main>
+    </div>
+</BaseLayout>

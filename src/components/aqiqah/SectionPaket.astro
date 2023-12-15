@@ -1,0 +1,190 @@
+---
+const { data } = Astro.props;
+import InputItemAqiqah from "./InputItemAqiqah.astro";
+import InputMasakAqiqah from "./InputMasakAqiqah.astro";
+import PaketCarousel from "./PaketCarousel.astro";
+
+// {
+//         "Paket": "Masak Satu Menu",
+//         "Carousel": {
+//           "untuk": "MasakSatuMenu",
+//         },
+//         "Keterangan": [
+//           "Setiap porsi adalah besaran porsi layak di konsumsi untuk 1 orang",
+//           "Jumlah porsi adalah hitungan estimasi karkas daging yang didapat",
+//         ],
+//          "Images": [
+//                      "/assets/images/aqiqah/",
+//                  ],
+//         "LaukUtama": [
+//             "Gulai",
+//             "Tongseng",
+//             "Semur",
+//             "Rica-rica",
+//             "Karengsengan",
+//             "Lada Hitam"
+//         ],
+//         "Kategori": {
+//           "Domba Betina": [
+---
+
+<section id={data.Paket} class="px-default">
+    <div class="paket-container g-0">
+        <div class="flex-1">
+            <PaketCarousel carousel={data.Carousel} />
+        </div>
+        <div class="flex-1 border border-bone">
+            <div
+                class="p-3 border-bottom border-bone bg-marrow"
+                style="position: sticky; top: 80px;
+        "
+            >
+                <h2 class="display-sm text-center text-green mb-0">
+                    {data.Paket}
+                </h2>
+            </div>
+            <div class="border-bottom border-bone p-3 mb-0">
+                <ul class="p-0">
+                    {
+                        data.Keterangan.map((ket) => (
+                            <li style="margin-left: 12px;">{ket}</li>
+                        ))
+                    }
+                </ul>
+            </div>
+
+            <div class="fieldset-container">
+                <fieldset>
+                    <h3
+                        class="title-sm text-blood text-center border-bottom border-bone pt-3 pb-4 mb-0"
+                    >
+                        Domba Betina
+                    </h3>
+                    {
+                        data.Kategori["Domba Betina"].map((item) => {
+                            const key = Object.keys(item)[0];
+
+                            return (
+                                <InputItemAqiqah
+                                    name="hewan"
+                                    tipe={key}
+                                    bobot={item[key].Berat}
+                                    porsi={item[key].Porsi}
+                                    harga1={item[key].Harga1Ekor}
+                                    harga2={item[key].Harga2Ekor}
+                                    kategori={data.Paket}
+                                    jenis={`Domba Betina ${key}`}
+                                />
+                            );
+                        })
+                    }
+                </fieldset>
+
+                <fieldset class="border-l-double">
+                    <h3
+                        class="title-sm text-blood text-center border-bottom border-bone pt-3 pb-4 mb-0"
+                    >
+                        Domba Jantan
+                    </h3>
+                    {
+                        data.Kategori["Domba Jantan"].map((item) => {
+                            const key = Object.keys(item)[0];
+
+                            return (
+                                <InputItemAqiqah
+                                    name="hewan"
+                                    tipe={key}
+                                    bobot={item[key].Berat}
+                                    porsi={item[key].Porsi}
+                                    harga1={item[key].Harga1Ekor}
+                                    harga2={item[key].Harga2Ekor}
+                                    kategori={data.Paket}
+                                    jenis={`Domba Jantan ${key}`}
+                                />
+                            );
+                        })
+                    }
+                </fieldset>
+            </div>
+            {
+                data.LaukUtama ? (
+                    <fieldset class="p-2 border-top border-bone">
+                        <p class="text-bold mb-2">Pilihan lauk utama:</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            {data.LaukUtama.map((item) => (
+                                <InputMasakAqiqah
+                                    kategori={data.Paket}
+                                    masakan={item}
+                                    name="Lauk Utama"
+                                    target="laukutama-select"
+                                />
+                            ))}
+                        </div>
+                    </fieldset>
+                ) : (
+                    <></>
+                )
+            }
+
+            {
+                data.LaukPendamping ? (
+                    <fieldset class="p-2 border-top border-bone">
+                        <p class="text-bold mb-2">Pilihan lauk pendamping:</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            {data.LaukPendamping.map((item) => (
+                                <InputMasakAqiqah
+                                    kategori={data.Paket}
+                                    masakan={item}
+                                    name="Lauk Pendamping"
+                                    target="laukpendamping-select"
+                                />
+                            ))}
+                        </div>
+                    </fieldset>
+                ) : (
+                    <></>
+                )
+            }
+
+            {
+                data.Sayur ? (
+                    <fieldset class="p-2 border-top border-bone">
+                        <p class="text-bold mb-2">Pilihan sayur:</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            {data.Sayur.map((item) => (
+                                <InputMasakAqiqah
+                                    kategori={data.Paket}
+                                    masakan={item}
+                                    name="Sayur"
+                                    target="sayur-select"
+                                />
+                            ))}
+                        </div>
+                    </fieldset>
+                ) : (
+                    <></>
+                )
+            }
+
+            {
+                data.Nasi ? (
+                    <fieldset class="p-2 border-top border-bone">
+                        <p class="text-bold mb-2">Pilihan nasi:</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            {data.Nasi.map((item) => (
+                                <InputMasakAqiqah
+                                    kategori={data.Paket}
+                                    masakan={item}
+                                    name="Nasi"
+                                    target="nasi-select"
+                                />
+                            ))}
+                        </div>
+                    </fieldset>
+                ) : (
+                    <></>
+                )
+            }
+        </div>
+    </div>
+</section>

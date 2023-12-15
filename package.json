@@ -1,0 +1,21 @@
+{
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev ",
+    "watch-scss-global": "sass --watch src/styles/scss/main.scss:src/styles/global.css",
+    "watch-scss-main": "sass --watch src/styles/scss/main.scss:public/main.css",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^3.1.4",
+    "sass": "^1.68.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}

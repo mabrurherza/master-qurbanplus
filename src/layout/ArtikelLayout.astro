@@ -1,0 +1,30 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+const { title, mainImage, thumb, excerpt } = frontmatter;
+console.log(frontmatter);
+---
+
+<BaseLayout>
+    <article
+        class="max-w-lg px-default py-small m-auto d-flex place-center flex-column"
+    >
+        <p class="eyebrow-base mb-3 text-gold">Artikel QurbanPlus</p>
+        <img
+            src={`/assets/images${thumb}`}
+            alt={title}
+            class="w-full aspect-video mb-5 object-cover"
+        />
+        <h1 class="max-w-sm text-center text-blood display-base mb-5">
+            {title}
+        </h1>
+        <div class="max-w-sm article-body center-justified">
+            <slot />
+        </div>
+        <div class="d-flex place-center mt-5 mb-5">
+            <a href="/artikel" class="link-gold link-underline"
+                >Lihat Semua Artikel</a
+            >
+        </div>
+    </article>
+</BaseLayout>

@@ -1,0 +1,84 @@
+---
+const bobot = 40;
+const namaHewan = "Cross Dorper F1 Gold";
+const harga = 5700000;
+const formattedHarga = new Intl.NumberFormat("id").format(harga);
+---
+
+<div id="carouselExampleIndicators" class="carousel slide">
+    <div class="carousel-indicators">
+        <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"></button>
+        <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="row max-w-lg m-auto">
+                <!-- Container for image -->
+                <div class="col-12 col-md px-default">
+                    <img
+                        class="aspect-square w-100 h-100"
+                        src="/assets/images/domba-jual-placeholder.jpg"
+                        alt=""
+                    />
+                </div>
+                <!-- Container for detail hewan -->
+                <div
+                    class="col-12 col-md px-default text-center d-flex flex-column gap-2 gap-md-3"
+                >
+                    <p class="eyebrow-sm text-gold">± {bobot}kg</p>
+                    <p class="display-base text-blood">{namaHewan}</p>
+                    <div class="spacer-24"></div>
+                    <p class="title-lg text-blood mb-2">
+                        Rp{formattedHarga}
+                    </p>
+                    <div class="d-flex flex-column gap-3">
+                        <button class="btn btn-primary w-100">PESAN</button>
+                        <button class="btn btn-secondary w-100"
+                            >HARGA TABUNGAN</button
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="row max-w-lg m-auto">
+                <img src="..." class="col-6 bg-warning h-100" alt="..." />
+                <div class="col-6 bg-danger h-100">tes</div>
+            </div>
+        </div>
+    </div>
+    <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+    >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next"
+    >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

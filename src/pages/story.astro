@@ -1,0 +1,145 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+const pageTitle = "Story of QurbanPlus";
+
+import Carousel from "../components/Carousel.astro";
+import ArtikelCard from "../components/ArtikelCard.astro";
+
+const carouselContents = await Astro.glob("./carousel-story/*.md");
+const articleContents = await Astro.glob("./artikel/*.md");
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <section class="hero container-fluid g-0">
+        <Carousel carouselContents={carouselContents} />
+    </section>
+
+    <section
+        class="bg-marrow row flex-column flex-md-row gap-5 py-xl g-0 px-default text-center"
+    >
+        <div class="d-flex flex-column gap-3 flex-1 place-center">
+            <h1 class="display-base text-blood max-w-sm">
+                Perjalanan QurbanPlus
+            </h1>
+            <p class="body-base max-w-xs">
+                Hadir sejak tahun 1441 H demi sebuah ikhtiar dalam menegakkan
+                syiar Hari Raya Idul Adha, Hari Raya Berqurban dengan pengalaman
+                ibadah yang berkesan dan meninggalkan rasa manis di hati,
+                melalui Festival Qurban dan Takbir di setiap tahunnya.
+            </p>
+            <p class="body-base max-w-xs">
+                Ini ritual tertua yang ada di bumi. Ritual yang berawal dari
+                pengorbanan Sang Khalil dan buah hati, Nabi Ibrahim dan Ismail
+                alaihimussalam. Ritual di hari-hari terbaik di sisi Allah,
+                sebagai pembuktian cinta, pengorbanan, dan ketakwaan.
+            </p>
+        </div>
+
+        <div class="flex-1">
+            <img
+                src="/assets/images/story-img-1.jpg"
+                class="aspect-portrait object-cover w-full w-md-75"
+                alt="Sejarah QurbanPlus"
+            />
+        </div>
+    </section>
+
+    <section
+        class="bg-marrow row flex-column-reverse flex-md-row gap-5 pb-xl g-0 px-default text-center"
+    >
+        <div class="flex-1">
+            <div id="imageSlider" class="carousel slide" data-bs-touch="true">
+                <div class="carousel-indicators">
+                    <button
+                        type="button"
+                        data-bs-target="#imageSlider"
+                        data-bs-slide-to="0"
+                        class="active"
+                        aria-label="Slide-1"></button>
+                    <button
+                        type="button"
+                        data-bs-target="#imageSlider"
+                        data-bs-slide-to="1"
+                        class=""
+                        aria-label="Slide-2"></button>
+                    <button
+                        type="button"
+                        data-bs-target="#imageSlider"
+                        data-bs-slide-to="2"
+                        class=""
+                        aria-label="Slide-3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item img-carousel-aqiqah active">
+                        <img
+                            src="/assets/images/story-slider-1.jpg"
+                            class="aspect-portrait object-cover w-full w-md-75"
+                            alt="Beragam pilihan menu aqiqah QurbanPlus: Gulai, Semur, Rendang, Nasi Kotak, Nasi Kebuli"
+                        />
+                    </div>
+                    <div class="carousel-item img-carousel-aqiqah">
+                        <img
+                            src="/assets/images/story-slider-2.jpg"
+                            class="aspect-portrait object-cover w-full w-md-75"
+                            alt="Beragam pilihan menu aqiqah QurbanPlus: Gulai, Semur, Rendang, Nasi Kotak, Nasi Kebuli"
+                        />
+                    </div>
+                    <div class="carousel-item img-carousel-aqiqah">
+                        <img
+                            src="/assets/images/story-slider-3.jpg"
+                            class="aspect-portrait object-cover w-full w-md-75"
+                            alt="Beragam pilihan menu aqiqah QurbanPlus: Gulai, Semur, Rendang, Nasi Kotak, Nasi Kebuli"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-1 d-flex flex-column place-center gap-3">
+            <p class="body-base max-w-xs">
+                Menyembelih sendiri untuk merasakan syahdunya pengorbanan
+                sepenuhnya pada Pencipta Langit dan Bumi.
+            </p>
+            <p class="body-base max-w-xs">
+                Bersama menjaga kumandang takbir sepanjang hari, membesarkan
+                syiar, membakar semangat bagi siapapun yang hadir.
+            </p>
+            <p class="body-base max-w-xs">
+                Menghidupkan area festival dengan hidangan chef profesional
+                pengisi tenaga dan pelepas dahaga, dan semarak area anak untuk
+                mengenalkan mereka dengan sebaik-baik perayaan.
+            </p>
+            <p class="body-base max-w-xs">
+                Hiruk pikuk lalu lalang tim dari mulai penyimpanan dan
+                pengolahan daging jadi santapan, pengiriman ke penerima manfaat,
+                pengolahan kulit menjadi tas untuk para ahli ilmu, semua adalah
+                ikhtiar agar Hari Raya Qurban ini jadi multi maslahat dan multi
+                manfaat untuk ummat.
+            </p>
+        </div>
+    </section>
+
+    <section
+        class="bg-green row flex-column place-center py-large px-default gap-5"
+    >
+        <h1 class="display-base text-gold max-w-sm text-center">
+            Festival Qurban dan Takbir 1443H
+        </h1>
+        <iframe
+            style="width: 100%; aspect-ratio: 16/9; max-width: 800px;"
+            src="https://www.youtube.com/embed/m4eM3MY9aBI?si=2yJtS_s7D9LtIB23"
+            title="Dokumentasi Festival Qurban dan Takbir 1443H"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+    </section>
+
+    <section class="row gap-3 flex-column place-center py-large">
+        <h1 class="display-base text-blood max-w-sm text-center">Artikel</h1>
+        <div class="article-list px-default">
+            {
+                articleContents.map((article) => (
+                    <ArtikelCard content={article} />
+                ))
+            }
+        </div>
+    </section>
+</BaseLayout>

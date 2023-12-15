@@ -1,0 +1,60 @@
+---
+function monthToNumber(month) {
+    const monthMap = {
+        January: 1,
+        February: 2,
+        March: 3,
+        April: 4,
+        May: 5,
+        June: 6,
+        July: 7,
+        August: 8,
+        September: 9,
+        October: 10,
+        November: 11,
+        December: 12,
+    };
+
+    // Convert the month name to its corresponding number
+    return monthMap[month];
+}
+
+function calculateRemainingMonths(
+    currentYear,
+    currentMonth,
+    targetYear,
+    targetMonth,
+) {
+    // Convert month names to numbers
+    currentMonth = monthToNumber(currentMonth);
+    targetMonth = monthToNumber(targetMonth);
+
+    // Continue with the calculation as before
+    const currentTotalMonths = currentYear * 12 + currentMonth;
+    const targetTotalMonths = targetYear * 12 + targetMonth;
+
+    const remainingMonths = targetTotalMonths - currentTotalMonths;
+
+    return remainingMonths;
+}
+
+// Example A
+const exampleAResult = calculateRemainingMonths(
+    2023,
+    "October",
+    2025,
+    "October",
+);
+console.log(`Example A: ${exampleAResult} months`);
+
+// Example B
+const exampleBResult = calculateRemainingMonths(
+    2023,
+    "December",
+    2024,
+    "November",
+);
+console.log(`Example B: ${exampleBResult} months`);
+---
+
+<h1>Demo</h1>
