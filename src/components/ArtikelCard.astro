@@ -4,13 +4,12 @@ const { title, thumb, excerpt, slug } = content.frontmatter;
 ---
 
 <div
-    style={`background-image: url("/assets/images${thumb}"); background-size: cover;`}
-    class="aspect-portrait d-flex flex-column justify-content-end"
+  style={`background-image: url("/assets/images${thumb}"); background-size: cover; background-position: center;`}
+  class="aspect-portrait d-flex flex-column justify-content-end"
 >
-    <h2 class="text-bone display-sm text-center p-3">{title}</h2>
-    <a
-        href=`/artikel/${slug}`
-        class="link-bone link-underline body-base text-center mb-5"
-        >Baca Artikel</a
-    >
+  <h2 class="text-bone display-sm text-center p-3">{title}</h2>
+  <a
+    href=`/artikel/${slug}`
+    class="link-bone link-underline body-base text-center mb-5">Baca Artikel</a
+  >
 </div>

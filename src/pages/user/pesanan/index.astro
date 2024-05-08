@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../../../layout/BaseLayout.astro";
+import CardPesanan from "../../../components/user/CardPesanan.astro";
+---
+
+<BaseLayout pageTitle="User Dashboard">
+  <main class="bg-marrow">
+    <div
+      class="dashboard-container max-w-xl py-large px-default row g-0 m-auto"
+    >
+      <div class="mb-5">
+        <h1 class="body-lg text-blood">Assalamu'alaikum Abdullah bin Uwais.</h1>
+        <p>Selamat datang di dashboard pengguna QurbanPlus.</p>
+      </div>
+      <div
+        class="dashboard-nav g-0 border border-bone d-flex flex-md-column justify-content-start h-fit"
+      >
+        <a href="/user" class="link-black flex-1 h-100">
+          <div class="user-nav d-flex border border-bone align-items-center">
+            <img src="/assets/icons/ic-user-red.svg" alt="icon profile" />
+            <p>Profile</p>
+          </div>
+        </a>
+
+        <a href="/user/pesanan" class="link-black flex-1 h-100">
+          <div
+            class="user-nav user-nav-active d-flex border border-bone align-items-center"
+          >
+            <img src="/assets/icons/ic-order-red.svg" alt="icon profile" />
+            <p>Pesanan</p>
+          </div>
+        </a>
+
+        <!-- <a href="" class="link-black flex-1 h-100">
+                    <div
+                        class="user-nav d-flex border border-bone align-items-center"
+                    >
+                        <img
+                            src="/assets/icons/ic-cart-red.svg"
+                            alt="icon profile"
+                        />
+                        <p>Keranjang</p>
+                    </div>
+                </a> -->
+      </div>
+
+      <div class="content-container g-0 p-2 flex-1">
+        <div class="d-flex flex-column gap-4">
+          <CardPesanan
+            status="Menunggu Pembayaran"
+            statusStyle="warning"
+            tanggal="4 Desember 2023"
+            kode="NH99CL"
+            hewan="Domba VIP"
+            bayar="Rp3.250.000"
+            showDeadline={true}
+            deadline="12 Des 2023, 11:30"
+            showInvoice={false}
+            showKodeBayar={true}
+          />
+          <CardPesanan
+            status="Diproses"
+            statusStyle="info"
+            tanggal="28 November 2023"
+            kode="BKT829"
+            hewan="Sapi Kolektif Premium"
+            bayar="Rp4.650.000"
+            showDeadline:
+            false,
+            deadline="12 Des 2023, 11:30"
+            showInvoice={true}
+            showKodeBayar={false}
+          />
+
+          <CardPesanan
+            status="Selesai"
+            statusStyle="success"
+            tanggal="10 Februari 2023"
+            kode="ABC29sx"
+            hewan="Domba Betina Small"
+            bayar="Rp1.650.000"
+            showDeadline={false}
+            deadline="12 Des 2023, 11:30"
+            showInvoice={true}
+            showKodeBayar={false}
+          />
+
+          <CardPesanan
+            status="Batal"
+            statusStyle="danger"
+            tanggal="3 Januari 2023"
+            kode="EFG567"
+            hewan="Domba Cross Dorper F1"
+            bayar="Rp5.800.000"
+            showDeadline={false}
+            deadline="12 Des 2023, 11:30"
+            showInvoice={false}
+            showKodeBayar={false}
+          />
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

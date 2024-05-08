@@ -86,7 +86,7 @@ const dataAqiqah = [
     "Paket": "Masak Satu Menu",
     "Carousel": {
       "untuk": "MasakSatuMenu",
-      images: ["/assets/images/aqiqah/paket-satu-menu-1.jpg", "/assets/images/aqiqah/placeholder-aqiqah-1.jpg", "/assets/images/aqiqah/placeholder-aqiqah-2.jpg"]
+      images: ["/assets/images/aqiqah/qurbanplus-aqiqah-satu-menu-gulai.jpg", "/assets/images/aqiqah/qurbanplus-aqiqah-satu-menu-semur.jpg", "/assets/images/aqiqah/qurbanplus-aqiqah-satu-menu-karengsengan.jpg"]
 
     },
     "Keterangan": [
@@ -191,7 +191,7 @@ const dataAqiqah = [
     "Paket": "Rice Box",
     "Carousel": {
       "untuk": "RiceBox",
-      images: ["/assets/images/aqiqah/paket-ricebox-1.jpg", "/assets/images/aqiqah/placeholder-aqiqah-1.jpg", "/assets/images/aqiqah/placeholder-aqiqah-2.jpg"]
+      images: ["/assets/images/aqiqah/qurbanplus-aqiqah-rice-box-1.jpg", "/assets/images/aqiqah/qurbanplus-aqiqah-rice-box-2.jpg", "/assets/images/aqiqah/qurbanplus-aqiqah-rice-box-3.jpg"]
     },
     "Keterangan": [
       "Setiap porsi adalah besaran porsi layak di konsumsi untuk 1 orang",
@@ -302,7 +302,7 @@ const dataAqiqah = [
     "Paket": "Masakan Timur Tengah",
     "Carousel": {
       "untuk": "TimurTengah",
-      images: ["/assets/images/aqiqah/paket-timurtengah-1.jpg", "/assets/images/aqiqah/placeholder-aqiqah-1.jpg", "/assets/images/aqiqah/placeholder-aqiqah-2.jpg"]
+      images: ["/assets/images/aqiqah/qurbanplus-aqiqah-timur-tengah-1.jpg", "/assets/images/aqiqah/qurbanplus-aqiqah-timur-tengah-2.jpg", "/assets/images/qurbanplus-aqiqah-timur-tengah-3.jpg"]
     },
     "Keterangan": [
       "Setiap porsi adalah besaran porsi layak di konsumsi untuk 1 orang",

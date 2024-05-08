@@ -9,7 +9,7 @@ const { kategori, masakan, target, name } = Astro.props;
         data-paket-masakan={kategori}
         name={name}
         value={masakan}
-        id={`${kategori} ${masakan}`}
+        id={`${kategori}${masakan}`}
     />
-    <label for={`${kategori}${masakan}`}>{masakan}</label><br />
+    <label for={`${kategori}${masakan}`}>{masakan}</label>
 </div>

@@ -8,7 +8,7 @@ bobot: 48
 harga: 4884000
 
 share:
-    image: /assets/images/hewan/dorper-gold.jpg
+    image: /assets/images/hewan/dorper-gold.avif
     title: Pilihan hewan QurbanPlus
 
 ---

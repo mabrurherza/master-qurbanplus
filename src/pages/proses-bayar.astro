@@ -1,0 +1,174 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+import Label from "../components/Label.astro";
+---
+
+<BaseLayout>
+  <main class="bg-marrow pb-4" style="min-height: 80svh;">
+    <div
+      class="breadcrumb mb-0 bg-bone px-default py-small d-flex place-center gap-2"
+    >
+      <p class="eyebrow-sm text-gold opacity-50">
+        <a class="link-gold no-underline" href="/checkout">checkout</a>
+      </p>
+      <p class="eyebrow-sm">{`>`}</p>
+      <p class="eyebrow-sm text-gold opacity-50">pemesanan</p>
+      <p class="eyebrow-sm">{`>`}</p>
+      <p class="eyebrow-sm text-gold">pembayaran</p>
+    </div>
+
+    <div class="dashboard-container max-w-md px-md py-small mx-auto">
+      <h1 class="body-lg text-bold text-blood">Proses bayar</h1>
+      <div class="g-0 flex-1">
+        <div class="bg-white p-2 border rounded-sm">
+          <h1 class="text-blood body-lg mb-4">
+            Detail tagihan pesanan <span class="text-primary">NH99CL</span>
+          </h1>
+
+          <div class="border-bottom pb-2 mb-2">
+            <div class="d-flex justify-content-between">
+              <p>Domba Betina VIP</p>
+              <div
+                class="d-flex align-items-center justify-content-between"
+                style="min-width: 40%;"
+              >
+                <p class="subtext">IDR</p>
+                <p>3.250.000</p>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p>Domba Betina Reguler</p>
+              <div
+                class="d-flex align-items-center justify-content-between"
+                style="min-width: 40%;"
+              >
+                <p class="subtext">IDR</p>
+                <p>2.000.000</p>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p>Ongkos kirim</p>
+              <div
+                class="d-flex align-items-center justify-content-between"
+                style="min-width: 40%;"
+              >
+                <p class="subtext">IDR</p>
+                <p>75.000</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p class="text-bold">Total tagihan</p>
+            <div
+              class="d-flex align-items-center justify-content-between"
+              style="min-width: 40%;"
+            >
+              <p class="subtext">IDR</p>
+              <p>6.250.000</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white mt-4 p-2 pb-3 border rounded-sm">
+          <p class="text-blood mb-2">Pilih nominal bayar:</p>
+
+          <div>
+            <div class="pb-2">
+              <input
+                type="radio"
+                class="btn-check"
+                name="options-base"
+                id="bayarPenuh"
+                value="6250000"
+                autocomplete="off"
+                checked
+              />
+              <label
+                class="bayar-penuh btn d-flex justify-content-between"
+                for="bayarPenuh"
+                ><p>Bayar penuh:</p><div
+                  class="d-flex align-items-center justify-content-between"
+                  style="min-width: 40%;"
+                >
+                  <p class="subtext">IDR</p>
+                  <p>6.250.000</p>
+                </div></label
+              >
+            </div>
+            <div>
+              <div
+                class="input-group input-nominal d-flex align-items-center justify-content-between"
+              >
+                <label for="numberInput">
+                  <p class="me-3">Bayar Cicil:</p>
+                </label>
+                <input
+                  type="text"
+                  style="max-width: 280px; text-align: right;"
+                  class="form-control"
+                  id="bayarCicil"
+                  placeholder="Masukkan nominal"
+                />
+                <div class="invalid-feedback">Nominal belum dimasukkan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white mt-4 p-2 border rounded-sm">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Kupon Diskon"
+              aria-label="Kupon Diskon"
+              aria-describedby="button-addon2"
+            />
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              id="button-addon2">Apply</button
+            >
+            <div class="invalid-feedback">Kupon tidak valid.</div>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <p>Subtotal</p>
+            <div
+              class="d-flex align-items-center justify-content-between"
+              style="min-width: 40%;"
+            >
+              <p class="subtext">IDR</p>
+              <p id="subTotalText">6.250.000</p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p>Potongan</p>
+            <div
+              class="d-flex align-items-center justify-content-between"
+              style="min-width: 40%;"
+            >
+              <p class="subtext">IDR</p>
+              <p>0</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="d-flex justify-content-between h-fit py-small">
+              <p class="body-xl">TOTAL BAYAR</p>
+              <p class="body-xl text-blood" id="totalBayar">6.250.000</p>
+            </div>
+            <p class="alert alert-info body-sm p-2 mb-2">
+              &#9432 Pembayaran akan diproses HANYA melalui CIMB Niaga.
+            </p>
+            <a href="/pembayaran">
+              <button class="btn btn-primary w-100">BAYAR</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<script src="/custom-scripts/proses-bayar.js" defer></script>

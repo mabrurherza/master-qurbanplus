@@ -15,7 +15,9 @@ const aqiqahCarousel = await Astro.glob("../content/aqiqah-carousel/*.md");
     </section>
     <main class="bg-marrow pt-5 d-flex flex-column gap-4">
         <div class="d-flex justify-content-center align-items-center mb-2">
-            <h1 class="display-base text-blood">Pilihan paket Aqiqah</h1>
+            <h1 class="display-base text-blood text-center">
+                Pilihan paket Aqiqah
+            </h1>
         </div>
         <!--! HANYA PESAN DOMBANYA SAJA -->
         <SectionPaket data={dataAqiqah[0]} />
@@ -45,7 +47,10 @@ const aqiqahCarousel = await Astro.glob("../content/aqiqah-carousel/*.md");
                     <button
                         class="btn btn-primary pesan-whatsapp d-flex gap-2 align-items-center"
                     >
-                        <img src="/assets/icons/ic-whatsapp.svg" />
+                        <img
+                            src="/assets/icons/ic-whatsapp.svg"
+                            alt="Logo Whatsapp"
+                        />
                         <p>Pesan via WA</p>
                     </button>
                 </a>
@@ -53,3 +58,5 @@ const aqiqahCarousel = await Astro.glob("../content/aqiqah-carousel/*.md");
         </div>
     </main>
 </BaseLayout>
+
+<script src="/custom-scripts/aqiqah.js" defer></script>

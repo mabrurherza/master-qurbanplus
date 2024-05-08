@@ -80,6 +80,13 @@ sup {
 
 
 //! TYPOGRAPHY
+
+.revelstoke {
+    font-family: var(--revelstoke);
+}
+
+
+
 p {
     font-size: 1rem;
 
@@ -141,18 +148,18 @@ p {
     letter-spacing: 0.025em;
 
     @include screenreach($large-screen) {
-        font-size: 3rem;
+        font-size: 2.75rem;
     }
 }
 
 .display-sm {
     font-family: var(--hochelaga);
-    font-size: 1.75rem;
+    font-size: 1.35rem;
     line-height: 100%;
     letter-spacing: 0.025em;
 
     @include screenreach($large-screen) {
-        font-size: 1.9rem;
+        font-size: 1.75rem;
     }
 }
 
@@ -316,9 +323,10 @@ p {
 }
 
 
-
 .link-black {
-    color: black
+    color: black;
+    text-decoration-color: black !important;
+
 }
 
 .link-blood {
@@ -384,6 +392,11 @@ a {
 
 
 //! Spacer
+.spacer-44 {
+    height: 44px;
+    width: 100%;
+}
+
 .spacer-32 {
     height: 32px;
     width: 100%;
@@ -424,6 +437,10 @@ a {
     height: fit-content;
 }
 
+.h-full {
+    height: 100%;
+}
+
 .w-full {
     width: 100%;
 }
@@ -458,6 +475,10 @@ a {
 
 .mr-5 {
     margin-right: 20px;
+}
+
+.ml-5 {
+    margin-left: 20px;
 }
 
 .vertical-center {
@@ -548,6 +569,10 @@ a {
     @include screenreach($medium-screen) {
         padding-bottom: 144px;
     }
+}
+
+pl-5 {
+    padding-left: 20px;
 }
 
 
@@ -664,8 +689,6 @@ z-10 {
     flex: 1 1 0%;
 }
 
-
-
 .pointer {
     cursor: pointer;
 }
@@ -740,7 +763,7 @@ z-10 {
     font-size: 14px;
     border: solid 1px var(--med-gray);
     background: #eeeeee;
-    padding: 1px 10px 1px 10px;
+    padding: 0 4px 0 4px;
 
     &:hover {
         border: solid 1px var(--med-gray);
@@ -768,22 +791,25 @@ nav {
     background: $gold-skin;
     margin-bottom: 0;
     margin-left: 20px;
-    gap: 20px;
+    gap: 10px;
+
 
     @include media-query($large-screen) {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        // justify-content: center;
+        padding-top: 96px;
+        gap: 10px;
         align-items: center;
         position: absolute;
-        top: 0;
+        top: 80px;
         left: -1000px;
         margin-left: 0;
 
 
         height: 100vh;
         width: 100%;
-        overflow-y: hidden;
+        overflow-y: scroll;
         z-index: 1;
 
         transition: left 0.3s cubic-bezier(.4, -0.01, 0, 1);
@@ -874,8 +900,20 @@ nav {
     }
 }
 
+.nav-faq-r {
+    display: none;
+
+    @include screenreach($medium-screen) {
+        display: block;
+
+        &:hover {
+            color: var(--marrow);
+        }
+    }
+}
+
 .hamburger {
-    width: 60px;
+    width: 36px;
     height: fit-content;
     display: none;
 
@@ -925,7 +963,6 @@ nav {
         flex-direction: column;
         gap: 6px;
         cursor: pointer;
-        padding-left: 20px;
 
     }
 
@@ -1297,7 +1334,6 @@ $duration: 30s;
 .card {
     border: none;
     background: var(--bone);
-    border-radius: 4px;
     overflow: hidden;
 }
 
@@ -1342,6 +1378,7 @@ $duration: 30s;
     width: fit-content;
     z-index: 2;
     transform: translateY(1px);
+    color: black;
 
     &:hover {
         color: var(--blood);
@@ -1467,6 +1504,22 @@ $duration: 30s;
         box-shadow: 0 0 0 0.25rem rgba(106, 37, 30, .15)
     }
 
+}
+
+.btn-check+.bayar-penuh {
+    border: 1px solid var(--lite-gray);
+    padding: 0.75rem 0.5rem;
+    color: var(--med-gray);
+
+    &:hover {
+        background-color: var(--bone);
+    }
+
+}
+
+.btn-check:checked+.bayar-penuh {
+    outline: 2px solid var(--green);
+    background-color: #E8F4F0;
 }
 
 .accordion-item {
@@ -1660,7 +1713,6 @@ $duration: 30s;
 
 .dashboard-nav {
 
-    &.active {}
 
     @include screenreach($medium-screen) {
         flex-direction: row;
@@ -1672,7 +1724,7 @@ $duration: 30s;
 .content-container {
     border: 2px solid var(--bone);
 
-    border-color: transparent var(--bone) var(--bone) var(--bone);
+    border-color: transparent var(--bone) ;
 
     @include screenreach($medium-screen) {
         margin-left: 28px;
@@ -1690,6 +1742,45 @@ $duration: 30s;
 }
 
 //! END USER PAGE
+
+.popup-video {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 100;
+}
+
+.popup-video-content {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.close-video {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 12px;
+    width: 100%;
+}
+
+.youtubeVideo {
+    aspect-ratio: 16/9;
+    width: 80vw;
+
+    @include screenreach($medium-screen) {
+        width: 50vw;
+    }
+}
 
 
 //! FOOTER

@@ -26,9 +26,20 @@ import BaseLayout from "../layout/BaseLayout.astro";
                     class="col-8 d-flex flex-column justify-content-between g-0 ps-4"
                 >
                     <div class="h-fit">
-                        <p class="bg-marrow uppercase w-fit p-1 subtext mb-2">
-                            domba
-                        </p>
+                        <div class="d-flex justify-content-between">
+                            <p
+                                class="bg-marrow uppercase w-fit p-1 subtext mb-2"
+                            >
+                                domba
+                            </p>
+                            <a
+                                class="link-danger pointer"
+                                style="text-decoration: underline;"
+                                id="buttonSalin"
+                                href="/checkout">Hapus</a
+                            >
+                        </div>
+
                         <h5 class="display-sm text-blood">
                             Cross Dorper F1 Gold
                         </h5>
@@ -119,3 +130,5 @@ import BaseLayout from "../layout/BaseLayout.astro";
         </section>
     </main>
 </BaseLayout>
+
+<script src="/custom-scripts/checkout.js" defer></script>

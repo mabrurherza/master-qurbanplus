@@ -8,7 +8,7 @@ harga: 6240000
 bobot: 55
 
 share:
-    image: /assets/images/hewan/diamond-garut.jpg
+    image: /assets/images/hewan/diamond-garut.avif
     title: Pilihan hewan QurbanPlus
 
 ---

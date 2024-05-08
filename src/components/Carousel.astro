@@ -1,77 +1,142 @@
 ---
 const { carouselContents } = Astro.props;
+
+function isYouTubeLink(link) {
+  // Regular expression to match YouTube video URLs
+  let youtubeRegex = /^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+/;
+
+  // Test if the link matches the YouTube URL pattern
+  return youtubeRegex.test(link);
+}
+
+function convertToEmbeddedLink(link) {
+  // Check if the provided link is a YouTube watch link
+  if (link.includes("youtube.com/watch?v=")) {
+    // Replace '/watch?v=' with '/embed/'
+    return link.replace("/watch?v=", "/embed/");
+  } else {
+    // Return the original link if it's not in the expected format
+    return link;
+  }
+}
 ---
 
 <div
-    id="carouselComponent"
-    class="carousel slide"
-    data-bs-ride="carousel"
-    data-bs-touch="true"
+  id="carouselComponent"
+  class="carousel slide"
+  data-bs-ride="carousel"
+  data-bs-touch="true"
 >
-    <div class="carousel-indicators" style="margin-bottom: 20px;">
-        {
-            carouselContents.length == 1
-                ? ""
-                : carouselContents.map((item, index) => (
-                      <button
-                          type="button"
-                          data-bs-target="#carouselComponent"
-                          data-bs-slide-to={index}
-                          aria-label={`Slide ${index + 1}`}
-                          class={index === 0 ? "active" : ""}
-                          aria-current={index === 0 ? "true" : ""}
-                      />
-                  ))
-        }
-    </div>
+  <div class="carousel-indicators" style="margin-bottom: 20px;">
+    {
+      carouselContents.length == 1
+        ? ""
+        : carouselContents.map((item, index) => (
+            <button
+              type="button"
+              data-bs-target="#carouselComponent"
+              data-bs-slide-to={index}
+              aria-label={`Slide ${index + 1}`}
+              class={index === 0 ? "active" : ""}
+              aria-current={index === 0 ? "true" : ""}
+            />
+          ))
+    }
+  </div>
 
-    <div class="carousel-inner">
-        {
-            carouselContents.map((item, index) => (
-                <div
-                    data-bs-interval="3000"
-                    class={
-                        index === 0
-                            ? "carousel-item carousel-item-homepage active"
-                            : "carousel-item carousel-item-homepage"
-                    }
-                >
-                    <div class="content text-bone text-center">
-                        <p class="title-sm mb-3">{item.frontmatter.subtitle}</p>
-                        <h1 class="display-lg max-w-md">
-                            {item.frontmatter.title}
-                        </h1>
-                        {item.frontmatter.deskripsi && (
-                            <p class="max-w-xs">{item.frontmatter.deskripsi}</p>
-                        )}
-                        {item.frontmatter.usp && (
-                            <div class="d-flex flex-column">
-                                {" "}
-                                {Object.keys(item.frontmatter.usp).map((u) => (
-                                    <p>{item.frontmatter.usp[u]}</p>
-                                ))}{" "}
-                            </div>
-                        )}
+  <div class="carousel-inner">
+    {
+      carouselContents.map((item, index) => (
+        <div
+          data-bs-interval="3000"
+          class={
+            index === 0
+              ? "carousel-item carousel-item-homepage active"
+              : "carousel-item carousel-item-homepage"
+          }
+        >
+          <div class="content text-bone text-center">
+            <p class="title-sm mb-3">{item.frontmatter.subtitle}</p>
+            <h1 class="display-lg max-w-md">{item.frontmatter.title}</h1>
+            {item.frontmatter.deskripsi && (
+              <p class="max-w-xs">{item.frontmatter.deskripsi}</p>
+            )}
+            {item.frontmatter.usp && (
+              <div class="d-flex flex-column">
+                {" "}
+                {Object.keys(item.frontmatter.usp).map((u) => (
+                  <p>{item.frontmatter.usp[u]}</p>
+                ))}{" "}
+              </div>
+            )}
 
-                        {item.frontmatter.CTA && <div class="spacer-32" />}
-                        {item.frontmatter.CTA && (
-                            <a
-                                href={item.frontmatter.CTA.link}
-                                class="slider-cta"
-                            >
-                                {" "}
-                                {item.frontmatter.CTA.text}
-                            </a>
-                        )}
-                    </div>
-                    <div>
-                        <img
-                            src={item.frontmatter.image.url}
-                            alt={item.frontmatter.image.alt}
-                        />
-                    </div>
-                </div>
-            ))
-        }
-    </div>
+            {item.frontmatter.CTA && <div class="spacer-32" />}
+
+            {isYouTubeLink(item.frontmatter.CTA.link) ? (
+              <a class="slider-cta pointer" id="openPopupVideo">
+                {" "}
+                {item.frontmatter.CTA.text}
+              </a>
+            ) : (
+              item.frontmatter.CTA && (
+                <a href={item.frontmatter.CTA.link} class="slider-cta">
+                  {" "}
+                  {item.frontmatter.CTA.text}
+                </a>
+              )
+            )}
+          </div>
+          <div>
+            <img
+              src={item.frontmatter.image.url}
+              alt={item.frontmatter.image.alt}
+            />
+          </div>
+        </div>
+      ))
+    }
+  </div>
 </div>
+
+{
+  carouselContents.map((item) =>
+    isYouTubeLink(item.frontmatter.CTA.link) ? (
+      <div class="popup-video" id="popupVideo">
+        <div class="popup-video-content">
+          <iframe
+            id="youtubeVideo"
+            class="youtubeVideo"
+            src={convertToEmbeddedLink(item.frontmatter.CTA.link)}
+            allowfullscreen
+          />
+          <p class="close-video" id="closePopupVideo">
+            close
+          </p>
+        </div>
+      </div>
+    ) : (
+      ""
+    )
+  )
+}
+
+<script>
+  const openPopupBtn = document.getElementById("openPopupVideo");
+  const closePopupBtn = document.getElementById("closePopupVideo");
+  const popup = document.getElementById("popupVideo");
+  const youtubeVideo = document.getElementById("youtubeVideo");
+
+  if (openPopupBtn) {
+    openPopupBtn.addEventListener("click", function () {
+      popup.style.display = "flex";
+    });
+  }
+
+  if (closePopupBtn) {
+    closePopupBtn.addEventListener("click", function () {
+      youtubeVideo.src = "";
+      popup.style.display = "none";
+      location.reload();
+    });
+  }
+</script>

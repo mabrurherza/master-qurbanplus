@@ -8,7 +8,7 @@ bobot: 700
 harga: 46935000
 
 share:
-    image: /assets/images/hewan/sapi-utuh-istimewa.jpg
+    image: /assets/images/hewan/sapi-utuh-istimewa.avif
     title: Pilihan hewan QurbanPlus
 
 ---

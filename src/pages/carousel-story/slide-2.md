@@ -7,5 +7,5 @@ image:
     alt: Slider-2 Storypage
 CTA:
     text: Lihat Video
-    link: https://www.youtube.com/watch?v=oYK1qLqdszU
+    link: https://www.youtube.com/watch?v=cx2enRxgdxY
 ---

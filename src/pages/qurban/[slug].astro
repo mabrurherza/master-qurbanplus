@@ -4,23 +4,23 @@ import BaseLayout from "../../layout/BaseLayout.astro";
 import { getCollection, CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-    const hewans = await getCollection("hewan");
+  const hewans = await getCollection("hewan");
 
-    return hewans.map((hewan) => {
-        return {
-            params: {
-                slug: hewan.slug,
-            },
-            props: {
-                hewan,
-            },
-        };
-    });
+  return hewans.map((hewan) => {
+    return {
+      params: {
+        slug: hewan.slug,
+      },
+      props: {
+        hewan,
+      },
+    };
+  });
 }
 
 // Typescript feature for autocomplete of what inside the props
 interface Props {
-    hewan: CollectionEntry<"hewan">;
+  hewan: CollectionEntry<"hewan">;
 }
 
 const { hewan } = Astro.props;
@@ -28,27 +28,27 @@ const { hewan } = Astro.props;
 // const { Content } = await hewan.render();
 
 function countdownMonths(targetMonth) {
-    const targetDate = new Date(targetMonth);
+  const targetDate = new Date(targetMonth);
 
-    const countdownArray = [];
+  const countdownArray = [];
 
-    for (let i = 11; i >= 0; i--) {
-        const currentDate = new Date(
-            targetDate.getFullYear(),
-            targetDate.getMonth() - i,
-            1,
-        );
+  for (let i = 11; i >= 0; i--) {
+    const currentDate = new Date(
+      targetDate.getFullYear(),
+      targetDate.getMonth() - i,
+      1
+    );
 
-        const countdownObj = {
-            month: currentDate.toLocaleString("id-ID", { month: "long" }),
-            year: currentDate.getFullYear(),
-            remainingMonths: 11 - i,
-        };
+    const countdownObj = {
+      month: currentDate.toLocaleString("id-ID", { month: "long" }),
+      year: currentDate.getFullYear(),
+      remainingMonths: 11 - i,
+    };
 
-        countdownArray.push(countdownObj);
-    }
+    countdownArray.push(countdownObj);
+  }
 
-    return countdownArray;
+  return countdownArray;
 }
 
 const targetMonth = "May 2023";
@@ -60,96 +60,84 @@ const maxMonths = 12; //
 const installments = [];
 
 for (let months = 1; months <= maxMonths; months++) {
-    const monthlyInstallment = Math.ceil(totalPrice / months);
-    installments.unshift(monthlyInstallment);
+  const monthlyInstallment = Math.ceil(totalPrice / months);
+  installments.unshift(monthlyInstallment);
 }
 
 countdownResult.forEach((item, index) => {
-    if (index < installments.length) {
-        item.number = installments[index];
-    }
+  if (index < installments.length) {
+    item.number = installments[index];
+  }
 });
 ---
 
 <BaseLayout>
-    <main class="d-flex flex-column flex-md-row g-0 order nowrap gap-3">
-        <section class="col">
-            <img
-                class="w-100 aspect-square"
-                src={hewan.data.share.image}
-                alt={`Pilihan hewan Qurbanplus: ${hewan.data.jenis} ${hewan.data.namaHewan}`}
-            />
-            <p class="d-none d-md-block text-center py-small">{hewan.body}</p>
-        </section>
+  <main class="d-flex flex-column flex-md-row g-0 order nowrap gap-3">
+    <section class="col">
+      <img
+        class="w-100 aspect-square object-cover"
+        src={hewan.data.share.image}
+        alt={`Pilihan hewan Qurbanplus: ${hewan.data.jenis} ${hewan.data.namaHewan}`}
+      />
+      <p class="d-none d-md-block text-center py-small">{hewan.body}</p>
+    </section>
 
-        <div class="v-divider-1"></div>
+    <div class="v-divider-1"></div>
 
-        <section class="col relative">
-            <div class="sticky-md-top row gap-3 g-0" style="top: 96px">
-                <div
-                    class="d-flex place-center flex-column justify-content-start"
-                    style="min-height: 120px;"
-                >
-                    <p class="eyebrow-base text-gold">{hewan.data.jenis}</p>
-                    <h5 class="display-base text-center text-blood">
-                        {hewan.data.namaHewan}
-                    </h5>
-                </div>
-                <div
-                    class="d-flex flex-row justify-content-between w-100 gap-1 border-bottom border-bone pb-2"
-                >
-                    <p class="subtext text-gold">BOBOT</p>
-                    <p class="display-sm text-blood">
-                        ±{hewan.data.bobot}kg
-                    </p>
-                </div>
-                <div
-                    class="d-flex flex-row justify-content-between w-100 gap-1 border-bottom border-bone pb-2"
-                >
-                    <p class="subtext text-gold">HARGA</p>
-                    <p class="display-sm text-blood">
-                        RP{
-                            new Intl.NumberFormat("id-ID").format(
-                                hewan.data.harga,
-                            )
-                        }
-                    </p>
-                </div>
-                <div>
-                    <a href="/checkout">
-                        <button class="btn btn-primary w-100">PESAN</button>
-                    </a>
-                </div>
+    <section class="col relative">
+      <div class="sticky-md-top row gap-3 g-0" style="top: 96px">
+        <div
+          class="d-flex place-center flex-column justify-content-start"
+          style="min-height: 120px;"
+        >
+          <p class="eyebrow-base text-gold">{hewan.data.jenis}</p>
+          <h5 class="display-base text-center text-blood">
+            {hewan.data.namaHewan}
+          </h5>
+        </div>
+        <div
+          class="d-flex flex-row justify-content-between w-100 gap-1 border-bottom border-bone pb-2"
+        >
+          <p class="subtext text-gold">BOBOT</p>
+          <p class="display-sm text-blood">
+            ±{hewan.data.bobot}kg
+          </p>
+        </div>
+        <div
+          class="d-flex flex-row justify-content-between w-100 gap-1 border-bottom border-bone pb-2"
+        >
+          <p class="subtext text-gold">HARGA</p>
+          <p class="display-sm text-blood">
+            RP{new Intl.NumberFormat("id-ID").format(hewan.data.harga)}
+          </p>
+        </div>
+        <div>
+          <a href="/checkout">
+            <button class="btn btn-primary w-100">PESAN</button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="v-divider-2"></div>
+
+    <section class="col bg-marrow px-default py-small">
+      <h5 class="eyebrow-base text-center text-gold pb-2">Skema Tabungan</h5>
+      <div class="d-flex flex-column gap-2">
+        <p class="subtext">*Opsi nominal bayar tersedia saat checkout</p>
+        {
+          countdownResult.map((i) => (
+            <div class="d-flex justify-content-between pb-2 border-bottom border-bone">
+              <p class="subtext text-gold">{`${i.month} ${i.year}`}</p>
+              <p class="display-sm text-blood">
+                {new Intl.NumberFormat("id-ID").format(i.number)}
+              </p>
             </div>
-        </section>
+          ))
+        }
+      </div>
+    </section>
 
-        <div class="v-divider-2"></div>
-
-        <section class="col bg-marrow px-default py-small">
-            <h5 class="eyebrow-base text-center text-gold pb-2">
-                Skema Tabungan
-            </h5>
-            <div class="d-flex flex-column gap-2">
-                <p class="subtext">
-                    *Opsi nominal bayar tersedia saat checkout
-                </p>
-                {
-                    countdownResult.map((i) => (
-                        <div class="d-flex justify-content-between pb-2 border-bottom border-bone">
-                            <p class="subtext text-gold">
-                                {`${i.month} ${i.year}`}
-                            </p>
-                            <p class="display-sm text-blood">
-                                {new Intl.NumberFormat("id-ID").format(
-                                    i.number,
-                                )}
-                            </p>
-                        </div>
-                    ))
-                }
-            </div>
-        </section>
-
-        <p class="d-block d-md-none text-center py-small">{hewan.body}</p>
-    </main>
+    <p class="d-block d-md-none text-center py-small">{hewan.body}</p>
+  </main>
 </BaseLayout>

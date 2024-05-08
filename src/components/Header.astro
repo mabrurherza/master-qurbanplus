@@ -12,7 +12,7 @@ const menus = [
   <nav
     class="navbar row g-0 justify-contents-center align-items-center fixed-top z-5"
   >
-    <div class="col z-3" id="NavToggler">
+    <div class="col z-3 ml-5" id="NavToggler">
       <div class="hamburger">
         <div></div>
         <div></div>
@@ -38,14 +38,24 @@ const menus = [
           ),
         )
       }
-      <a href="/faq" class="nav-link nav-faq">&nbsp;FAQ&nbsp;</a>
-      <a
-        class="nav-whatsapp nav-link"
-        href="https://wa.me/+62081293150101?text=Assalamualaikum%20admin%20QurbanPlus"
-        target="_blank"
-        title="Hubungin admin QurbanPlus via whatsapp untuk informasi lebih lanjut."
-        >WA: 0812923150101</a
-      >
+      <li>
+        <a href="/faq" class="nav-link nav-faq">&nbsp;FAQ&nbsp;</a>
+      </li>
+      <li>
+        <a
+          class="nav-whatsapp nav-link"
+          href="https://wa.me/+62081293150101?text=Assalamualaikum%20admin%20QurbanPlus"
+          target="_blank"
+          title="Hubungin admin QurbanPlus via whatsapp untuk informasi lebih lanjut."
+        >
+          <img
+            src="/assets/icons/ic-whatsapp.svg"
+            alt="Whatsapp icon"
+            style="height: 32px; margin-right: 12px;"
+          />
+           0812923150101</a
+        >
+      </li>
     </ul>
 
     <div class="col d-flex justify-content-center z-3">
@@ -58,7 +68,9 @@ const menus = [
       >
     </div>
 
-    <div class="col z-3 mr-5 d-flex justify-content-end gap-2">
+    <div class="col z-3 mr-5 d-flex justify-content-end gap-3">
+      <a href="/faq" class="nav-link revelstoke nav-faq-r">FAQ</a>
+
       <a
         href="https://wa.me/+62081293150101?text=Assalamualaikum%20admin%20QurbanPlus"
         target="_blank"
@@ -89,7 +101,7 @@ const menus = [
           </g>
         </svg>
       </a>
-      <a href="/user">
+      <a href="/user" title="Menuju dashboard customer">
         <svg
           width="32"
           height="32"
@@ -111,5 +123,3 @@ const menus = [
     </div>
   </nav>
 </header>
-
-<script></script>

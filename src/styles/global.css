@@ -45,6 +45,10 @@ sup {
   border: 2px solid red;
 }
 
+.revelstoke {
+  font-family: var(--revelstoke);
+}
+
 p {
   font-size: 1rem;
 }
@@ -108,19 +112,19 @@ p {
 }
 @media (min-width: 992px) {
   .display-base {
-    font-size: 3rem;
+    font-size: 2.75rem;
   }
 }
 
 .display-sm {
   font-family: var(--hochelaga);
-  font-size: 1.75rem;
+  font-size: 1.35rem;
   line-height: 100%;
   letter-spacing: 0.025em;
 }
 @media (min-width: 992px) {
   .display-sm {
-    font-size: 1.9rem;
+    font-size: 1.75rem;
   }
 }
 
@@ -289,6 +293,7 @@ p {
 
 .link-black {
   color: black;
+  text-decoration-color: black !important;
 }
 
 .link-blood {
@@ -345,6 +350,11 @@ a {
   text-decoration: none;
 }
 
+.spacer-44 {
+  height: 44px;
+  width: 100%;
+}
+
 .spacer-32 {
   height: 32px;
   width: 100%;
@@ -385,6 +395,10 @@ a {
   height: fit-content;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .w-full {
   width: 100%;
 }
@@ -419,6 +433,10 @@ a {
 
 .mr-5 {
   margin-right: 20px;
+}
+
+.ml-5 {
+  margin-left: 20px;
 }
 
 .vertical-center {
@@ -515,6 +533,10 @@ a {
   .pb-xl {
     padding-bottom: 144px;
   }
+}
+
+pl-5 {
+  padding-left: 20px;
 }
 
 .border-bone {
@@ -686,7 +708,7 @@ z-10 {
   font-size: 14px;
   border: solid 1px var(--med-gray);
   background: #eeeeee;
-  padding: 1px 10px 1px 10px;
+  padding: 0 4px 0 4px;
 }
 .btn-sm:hover {
   border: solid 1px var(--med-gray);
@@ -711,21 +733,22 @@ nav {
   background: #7E623F;
   margin-bottom: 0;
   margin-left: 20px;
-  gap: 20px;
+  gap: 10px;
 }
 @media (max-width: 992px) {
   .nav-list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-top: 96px;
+    gap: 10px;
     align-items: center;
     position: absolute;
-    top: 0;
+    top: 80px;
     left: -1000px;
     margin-left: 0;
     height: 100vh;
     width: 100%;
-    overflow-y: hidden;
+    overflow-y: scroll;
     z-index: 1;
     transition: left 0.3s cubic-bezier(0.4, -0.01, 0, 1);
   }
@@ -811,8 +834,20 @@ nav {
   }
 }
 
+.nav-faq-r {
+  display: none;
+}
+@media (min-width: 768px) {
+  .nav-faq-r {
+    display: block;
+  }
+  .nav-faq-r:hover {
+    color: var(--marrow);
+  }
+}
+
 .hamburger {
-  width: 60px;
+  width: 36px;
   height: fit-content;
   display: none;
   transition: transform 1s cubic-bezier(0.4, -0.01, 0, 1);
@@ -852,7 +887,6 @@ nav {
     flex-direction: column;
     gap: 6px;
     cursor: pointer;
-    padding-left: 20px;
   }
 }
 
@@ -1172,7 +1206,6 @@ nav {
 .card {
   border: none;
   background: var(--bone);
-  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -1210,6 +1243,7 @@ nav {
   width: fit-content;
   z-index: 2;
   transform: translateY(1px);
+  color: black;
 }
 .btn-filter:hover {
   color: var(--blood);
@@ -1321,6 +1355,20 @@ nav {
 }
 .form-check-input:focus {
   box-shadow: 0 0 0 0.25rem rgba(106, 37, 30, 0.15);
+}
+
+.btn-check + .bayar-penuh {
+  border: 1px solid var(--lite-gray);
+  padding: 0.75rem 0.5rem;
+  color: var(--med-gray);
+}
+.btn-check + .bayar-penuh:hover {
+  background-color: var(--bone);
+}
+
+.btn-check:checked + .bayar-penuh {
+  outline: 2px solid var(--green);
+  background-color: #E8F4F0;
 }
 
 .accordion-item {
@@ -1508,7 +1556,7 @@ nav {
 
 .content-container {
   border: 2px solid var(--bone);
-  border-color: transparent var(--bone) var(--bone) var(--bone);
+  border-color: transparent var(--bone);
 }
 @media (min-width: 768px) {
   .content-container {
@@ -1521,6 +1569,45 @@ nav {
   .order-detail-item {
     border-left: 1px solid var(--bone);
     padding-left: 14px;
+  }
+}
+
+.popup-video {
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 100;
+}
+
+.popup-video-content {
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.close-video {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.youtubeVideo {
+  aspect-ratio: 16/9;
+  width: 80vw;
+}
+@media (min-width: 768px) {
+  .youtubeVideo {
+    width: 50vw;
   }
 }
 

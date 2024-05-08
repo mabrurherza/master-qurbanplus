@@ -22,7 +22,6 @@ function updateFormatPesan() {
     let formatPesanWAbaru = `Assalamu'alaikum admin Qurbanplus, insyaAllah saya ingin pesan Aqiqah. ${pesanPilihanHewan} %0D%0A${pesanPilihanLaukUtama} %0D%0A${pesanPilihanLaukPendamping} %0D%0A${pesanPilihanSayur} %0D%0A${pesanPilihanNasi}`;
     let formatURLWA = `${convertSpacesToPercent20(formatPesanWAbaru)}`;
 
-    console.log(formatPesanWAbaru);
     linkWA.href = `https://wa.me/6281293150101?text=${formatURLWA}`;
 }
 

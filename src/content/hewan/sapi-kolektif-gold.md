@@ -8,7 +8,7 @@ bobot: 450
 harga: 4460714
 
 share:
-    image: /assets/images/hewan/sapi-kolektif-gold.jpg
+    image: /assets/images/hewan/sapi-kolektif-gold.avif
     title: Pilihan hewan QurbanPlus
 
 ---

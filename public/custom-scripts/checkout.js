@@ -12,13 +12,19 @@ const total = document.querySelector(".total");
 
 // Set initial value
 let currentValue = 1;
+
 jumlahPesanan.textContent = currentValue;
+
+
 subtotal.textContent = new Intl.NumberFormat("id-ID").format(
     currentValue * hargaHewan,
 );
+
+
 total.textContent = new Intl.NumberFormat("id-ID").format(
     currentValue * hargaHewan,
 );
+
 
 function updateResult(value) {
     total.textContent = new Intl.NumberFormat("id-ID").format(

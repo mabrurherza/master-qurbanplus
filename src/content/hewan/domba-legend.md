@@ -8,7 +8,7 @@ harga: 3996000
 bobot: 40
 
 share:
-    image: /assets/images/hewan/domba-legend.jpg
+    image: /assets/images/hewan/domba-legend.avif
     title: Pilihan hewan QurbanPlus
 
 ---

@@ -5,7 +5,7 @@ import BaseLayout from "../layout/BaseLayout.astro";
 const pageTitle = "QurbanPlus-Jelajahi Pilihan Hewan-Hewan Qurban Kami";
 
 import Carousel from "../components/Carousel.astro";
-const qurbanCarousel = await Astro.glob("./qurban-carousel/*.md");
+const qurbanCarousel = await Astro.glob("./carousel-qurban/*.md");
 
 import CardHewan from "../components/CardHewan.astro";
 const allHewan = await getCollection("hewan");
@@ -112,4 +112,4 @@ const shortFAQ = Questions.slice(0, 4);
     </section>
 </BaseLayout>
 
-<style></style>
+<script src="/custom-scripts/filter-hewan.js" defer></script>

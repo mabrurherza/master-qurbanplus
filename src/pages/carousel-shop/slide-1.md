@@ -1,11 +1,11 @@
 ---
 subtitle: Coming Soon
-title: QURBANPLUS OFFICIAL MERC.
+title: QURBANPLUS OFFICIAL MERCH.
 deskripsi: Insyaallah akan datang.
 image:
     url: /assets/images/shop-comingsoon.jpg
     alt: Akan hadir insyaAllah QurbanPlus Shop
-# CTA:
-#     text: Putar Story
-#     link: /story
+CTA:
+    text: 
+    link: 
 ---
